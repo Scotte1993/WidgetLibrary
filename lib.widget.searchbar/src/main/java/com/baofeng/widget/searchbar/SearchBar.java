@@ -2,6 +2,7 @@ package com.baofeng.widget.searchbar;
 
 import android.content.Context;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -166,6 +167,11 @@ public class SearchBar extends FrameLayout implements OnClickListener, OnEditorA
         @Override
         public void onCancel() {
         }
+    }
+
+    public EditText getEditSearch() {
+        mEditSearch.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        return mEditSearch;
     }
 
 }
