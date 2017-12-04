@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="line_gray">#e2e4e7</color>
+
+    <color name="widget_text_color">#333333</color>
+    <color name="widget_text_sub">#999999</color>
+    <color name="widget_text_sel">#3462ff</color>
+</resources>

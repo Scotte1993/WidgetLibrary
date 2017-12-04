@@ -1,0 +1,102 @@
+ext {
+    configuration = [
+            compileSdkVersion: 26,
+            buildToolsVersion: '26.0.2',
+            minSdkVersion    : 17,
+            targetSdkVersion : 26,
+            versionCode      : 1,
+            versionName      : "1.0",
+    ]
+
+    support_version = '26.1.0'
+    anko_version = '0.10.1'
+
+    aar = [
+            "debug"               : [name: 'debug-1.2.0', ext: 'aar'],
+            "adapter-recyclerview": [name: 'adapter-recyclerview-1.1.9', ext: 'aar'],
+            "joker-resources"     : [name: 'joker-resources-1.0.3(25.1.1)', ext: 'aar'],
+            "utils"               : [name: 'lib.utils-release', ext: 'aar'],
+            "utils-imagepicker"   : [name: 'lib.utils.imagepicker-release', ext: 'aar'],
+            "utils-support"       : [name: 'lib.utils.support-release', ext: 'aar'],
+    ]
+
+    libraries = [
+
+            // react-native
+            "react-native"                   : "com.facebook.react:react-native:+",
+
+            // retrofit、okhttp、rxjava
+            "rxjava"                         : 'io.reactivex:rxjava:1.2.2',
+            "rxandroid"                      : 'io.reactivex:rxandroid:1.2.1',
+            "okhttp3"                        : 'com.squareup.okhttp3:okhttp:3.7.0',
+            "okhttp3_logging"                : 'com.squareup.okhttp3:logging-interceptor:3.7.0',
+            "retrofit"                       : 'com.squareup.retrofit2:retrofit:2.1.0',
+            "retrofit-adapter-rxjava"        : 'com.squareup.retrofit2:adapter-rxjava:2.1.0',
+            "retrofit-converter-jackson"     : 'com.squareup.retrofit2:converter-jackson:2.1.0',
+            "retrofit-converter-scalars"     : 'com.squareup.retrofit2:converter-scalars:2.1.0',
+            "retrofit-converter-gson"        : 'com.squareup.retrofit2:converter-gson:2.1.0',
+            "gson"                           : 'com.google.code.gson:gson:2.8.1',
+            "imagepreview"                   : 'com.junpu.imagepreview:imagepreview:1.0.1',
+            "fresco"                         : 'com.facebook.fresco:fresco:1.3.0',
+            "photodraweeview"                : 'me.relex:photodraweeview:1.1.2',
+            "PhotoView"                      : 'com.github.chrisbanes:PhotoView:1.3.1',
+            "glide"                          : 'com.github.bumptech.glide:glide:3.7.0',
+
+            // abooc
+            "adapter-recyclerview-23"        : 'com.abooc.joker:adapter-recyclerview:1.1.9(23.2.1)',
+            "adapter-recyclerview"           : 'com.abooc.joker:adapter-4recyclerview:1.1.9',
+            "joker-resources"                : 'com.abooc.joker:joker-resources:1.0.3(25.1.1)',
+            "joker-tab"                      : 'com.abooc.joker:joker-tab:1.1.1(25.1.1)',
+            "debug"                          : 'com.abooc.debug:debug-core:latest.integration',
+            "emoji"                          : 'com.abooc.joker:emoji:1.6.4.04201912',
+
+            // baofeng
+            "utils"                          : 'com.baofeng.utils:utils:1.0.0',
+            "utils-dlog"                     : 'com.baofeng.utils:utils-dlog:1.0.0',
+            "utils-gson"                     : 'com.baofeng.utils:utils-gson:1.0.0',
+            "utils-fresco"                   : 'com.baofeng.utils:utils-fresco:1.0.0',
+            "utils-retrofit"                 : 'com.baofeng.utils:utils-retrofit:1.0.0',
+            "widget-indicator"               : 'com.baofeng.widget:widget-indicator:1.0.0',
+
+            // android support
+            "appcompat-v7"                   : "com.android.support:appcompat-v7:$support_version",
+            "support-v4"                     : "com.android.support:support-v4:$support_version",
+            "support-annotations"            : "com.android.support:support-annotations:$support_version",
+            "support-vector-drawable"        : "com.android.support:support-vector-drawable:$support_version",
+            "design"                         : "com.android.support:design:$support_version",
+            "recyclerview-v7"                : "com.android.support:recyclerview-v7:$support_version",
+            "cardview-v7"                    : "com.android.support:cardview-v7:$support_version",
+            "leanback-v17"                   : "com.android.support:leanback-v17:$support_version",
+            "multidex"                       : "com.android.support:multidex:1.0.1",
+            "constraint-layout"              : "com.android.support.constraint:constraint-layout:1.0.2",
+
+            // kotlin
+            "kotlin-stdlib"                  : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            "kotlin-stdlib-jre7"             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
+
+            // anko
+            "anko-commons"                   : "org.jetbrains.anko:anko-commons:$anko_version",
+            "anko-sdk25"                     : "org.jetbrains.anko:anko-sdk25:$anko_version", // sdk15, sdk19, sdk21, sdk23 are also available
+            "anko-sdk25-coroutines"          : "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version",
+            "anko-sqlite"                    : "org.jetbrains.anko:anko-sqlite:$anko_version",
+            "anko-appcompat-v7-commons"      : "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version",
+            "anko-appcompat-v7"              : "org.jetbrains.anko:anko-appcompat-v7:$anko_version",
+            "anko-appcompat-v7-coroutines"   : "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version",
+            "anko-coroutines"                : "org.jetbrains.anko:anko-coroutines:$anko_version",
+            "anko-cardview-v7"               : "org.jetbrains.anko:anko-cardview-v7:$anko_version",
+            "anko-design"                    : "org.jetbrains.anko:anko-design:$anko_version",
+            "anko-design-coroutines"         : "org.jetbrains.anko:anko-design-coroutines:$anko_version",
+            "anko-gridlayout-v7"             : "org.jetbrains.anko:anko-gridlayout-v7:$anko_version",
+            "anko-percent"                   : "org.jetbrains.anko:anko-percent:$anko_version",
+            "anko-recyclerview-v7"           : "org.jetbrains.anko:anko-recyclerview-v7:$anko_version",
+            "anko-recyclerview-v7-coroutines": "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$anko_version",
+            "anko-support-v4-commons"        : "org.jetbrains.anko:anko-support-v4-commons:$anko_version",
+            "anko-support-v4"                : "org.jetbrains.anko:anko-support-v4:$anko_version",
+            "eventbus"                       : "org.greenrobot:eventbus:3.0.0",
+            "qiniu-pili-android-qos"         : 'com.qiniu.pili:pili-android-qos:0.8.20',
+
+            // 权限
+            "tedpermission"                  : 'gun0912.ted:tedpermission:2.0.3',
+
+    ]
+}

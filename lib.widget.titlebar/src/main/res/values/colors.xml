@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="titlebar_text_color_dark">#535d75</color>
+    <color name="titlebar_text_color_light">#ffffff</color>
+
+    <drawable name="titlebar_selected_background_selected">#30ffffff</drawable>
+    <drawable name="titlebar_selected_background_press">#30666666</drawable>
+    <drawable name="titlebar_selected_background_normal">#00000000</drawable>
+
+
+</resources>

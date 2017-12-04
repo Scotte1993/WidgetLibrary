@@ -1,0 +1,5 @@
+include ':app', ':lib.widget.searchbar'
+include ':lib.widget'
+include ':lib.widget.indicator'
+include ':lib.widget.messageview'
+include ':lib.widget.titlebar'

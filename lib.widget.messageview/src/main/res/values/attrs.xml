@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="colorMode" format="enum">
+        <enum name="light" value="0" />
+        <enum name="dark" value="1" />
+    </attr>
+
+    <!-- MessageView -->
+    <declare-styleable name="MessageView">
+        <attr name="colorMode" />
+    </declare-styleable>
+</resources>
