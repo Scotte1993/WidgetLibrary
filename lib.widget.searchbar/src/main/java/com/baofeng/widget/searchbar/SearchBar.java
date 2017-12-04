@@ -139,6 +139,11 @@ public class SearchBar extends FrameLayout implements OnClickListener, OnEditorA
         SearchUtils.hideInputMethod(getContext(), mEditSearch);
     }
 
+    public EditText getEditSearch() {
+        mEditSearch.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        return mEditSearch;
+    }
+
     /**
      * 设置搜索回调
      *
@@ -167,11 +172,6 @@ public class SearchBar extends FrameLayout implements OnClickListener, OnEditorA
         @Override
         public void onCancel() {
         }
-    }
-
-    public EditText getEditSearch() {
-        mEditSearch.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        return mEditSearch;
     }
 
 }
