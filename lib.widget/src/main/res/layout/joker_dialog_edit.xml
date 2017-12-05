@@ -15,7 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:background="@null"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/widget_text_color"
         android:textSize="14sp"/>
 
@@ -53,7 +52,7 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="@string/dialob_save"
+            android:text="@string/dialog_save"
             android:textColor="@color/widget_text_sel"/>
 
     </LinearLayout>

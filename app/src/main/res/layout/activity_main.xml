@@ -15,4 +15,8 @@
         android:text="Hello World!" />
 
 
+    <com.baofeng.widget.SwitchButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

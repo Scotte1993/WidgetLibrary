@@ -3,9 +3,6 @@ package com.baofeng.widget;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -28,16 +25,16 @@ public class ToastDialog extends Dialog {
     private TextView mPositiveButton;
     private OnClickListener mPositiveListener;
 
-    public ToastDialog(@NonNull Context context) {
+    public ToastDialog(Context context) {
         this(context, android.R.style.Theme_Holo_Dialog_NoActionBar);
     }
 
-    public ToastDialog(@NonNull Context context, @StyleRes int themeResId) {
+    public ToastDialog(Context context, int themeResId) {
         super(context, themeResId);
         init();
     }
 
-    protected ToastDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
+    protected ToastDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
         init();
     }

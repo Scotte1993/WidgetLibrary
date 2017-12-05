@@ -32,6 +32,7 @@ dependencies {
 //    compile lib['constraint-layout']
 
     implementation project(':lib.widget.searchbar')
+    implementation project(':lib.widget')
 
     implementation aar['debug']
 }

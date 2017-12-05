@@ -3,5 +3,5 @@
 
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
-    <string name="dialob_save">保存</string>
+    <string name="dialog_save">保存</string>
 </resources>

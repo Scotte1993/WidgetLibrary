@@ -6,18 +6,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-
-import com.baofeng.utils.support.WeakHandler;
 
 /**
  * Created by lichnexing on 2016/2/24
  */
-
 public class DialogEdit extends Dialog implements View.OnClickListener {
 
-
+    private EditText mEditText;
     private View.OnClickListener mOnClickListener;
 
     public DialogEdit(Context context) {
@@ -45,19 +41,12 @@ public class DialogEdit extends Dialog implements View.OnClickListener {
 
         findViewById(R.id.Cancel).setOnClickListener(this);
         findViewById(R.id.Ok).setOnClickListener(this);
+        mEditText = findViewById(R.id.MessageText);
     }
 
     public void setText(String content) {
-        ((EditText) findViewById(R.id.MessageText)).setText(content);
-        findViewById(R.id.MessageText).requestFocus();
-
-        new WeakHandler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                InputMethodManager imm = (InputMethodManager) getContext().getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-            }
-        }, 200);
+        mEditText.setText(content);
+        mEditText.requestFocus();
     }
 
     public void setOnClickListener(View.OnClickListener l) {
@@ -69,10 +58,8 @@ public class DialogEdit extends Dialog implements View.OnClickListener {
         int i = view.getId();
         if (i == R.id.Cancel) {
             dismiss();
-
         } else if (i == R.id.Ok) {
             dismiss();
-
         }
         if (mOnClickListener != null) {
             mOnClickListener.onClick(view);

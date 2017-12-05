@@ -3,9 +3,6 @@ package com.baofeng.widget;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StyleRes;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -17,16 +14,16 @@ public class LoadingDialog extends Dialog {
 
     private TextView mMessageView;
 
-    public LoadingDialog(@NonNull Context context) {
+    public LoadingDialog(Context context) {
         this(context, android.R.style.Theme_Holo_Dialog_NoActionBar);
     }
 
-    public LoadingDialog(@NonNull Context context, @StyleRes int themeResId) {
+    public LoadingDialog(Context context, int themeResId) {
         super(context, themeResId);
         init();
     }
 
-    protected LoadingDialog(@NonNull Context context, boolean cancelable, @Nullable OnCancelListener cancelListener) {
+    protected LoadingDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
         init();
     }
