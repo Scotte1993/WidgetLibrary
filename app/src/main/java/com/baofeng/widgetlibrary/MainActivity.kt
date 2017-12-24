@@ -9,6 +9,7 @@ import com.baofeng.widget.searchbar.SearchBar.SimpleOnSearchListener
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Debug.out("MainActivity.onCreate: ")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onSearch(key: String?) {
                 Debug.out("onSearch: key ---> $key")
+                TestActivity.launch(this@MainActivity)
             }
 
             override fun onCancel() {
@@ -27,5 +29,35 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onStart() {
+        Debug.out("MainActivity.onStart: ")
+        super.onStart()
+    }
+
+    override fun onRestart() {
+        Debug.out("MainActivity.onRestart: ")
+        super.onRestart()
+    }
+
+    override fun onResume() {
+        Debug.out("MainActivity.onResume: ")
+        super.onResume()
+    }
+
+    override fun onPause() {
+        Debug.out("MainActivity.onPause: ")
+        super.onPause()
+    }
+
+    override fun onStop() {
+        Debug.out("MainActivity.onStop: ")
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        Debug.out("MainActivity.onDestroy: ")
+        super.onDestroy()
     }
 }

@@ -14,7 +14,7 @@ ext {
     aar = [
             "debug"               : [name: 'debug-1.2.0', ext: 'aar'],
             "adapter-recyclerview": [name: 'adapter-recyclerview-1.1.9', ext: 'aar'],
-            "joker-resources"     : [name: 'joker-resources-1.0.3(25.1.1)', ext: 'aar'],
+            "resources"           : [name: 'lib.resources-release', ext: 'aar'],
             "utils"               : [name: 'lib.utils-release', ext: 'aar'],
             "utils-imagepicker"   : [name: 'lib.utils.imagepicker-release', ext: 'aar'],
             "utils-support"       : [name: 'lib.utils.support-release', ext: 'aar'],

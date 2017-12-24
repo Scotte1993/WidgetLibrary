@@ -31,6 +31,6 @@ dependencies {
 //    compile lib['kotlin-stdlib-jre7']
 //    compile lib['appcompat-v7']
 
-    compile aar['joker-resources']
+    compile aar['resources']
     compile aar['utils']
 }

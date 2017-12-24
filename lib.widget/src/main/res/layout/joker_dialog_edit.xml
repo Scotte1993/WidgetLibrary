@@ -3,11 +3,11 @@
     android:id="@+id/activity_main"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_margin="24dp"
-    android:focusableInTouchMode="true"
+    android:background="@drawable/ic_dialog_bg"
     android:focusable="true"
-    android:background="@drawable/ic_dialog_bg">
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/MessageText"
@@ -16,9 +16,12 @@
         android:layout_margin="32dp"
         android:background="@null"
         android:textColor="@color/widget_text_color"
-        android:textSize="14sp"/>
+        android:textSize="14sp" />
 
-    <include layout="@layout/joker_line_h_gray" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/line_gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,14 +36,17 @@
             android:layout_weight="1"
             android:background="@drawable/default_item_selector"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="@string/cancel"
-            android:focusable="true"
             android:textColor="@color/widget_text_sub" />
 
-        <include layout="@layout/joker_line_v_gray" />
+        <TextView
+            android:layout_width="0.3dp"
+            android:layout_height="match_parent"
+            android:background="@color/line_gray" />
 
         <TextView
             android:id="@+id/Ok"
@@ -53,7 +59,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="@string/dialog_save"
-            android:textColor="@color/widget_text_sel"/>
+            android:textColor="@color/widget_text_sel" />
 
     </LinearLayout>
 </LinearLayout>
