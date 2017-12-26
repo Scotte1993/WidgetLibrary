@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ProgressBar
         android:id="@android:id/progress"
@@ -13,11 +11,11 @@
         android:id="@+id/MessageViewLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
         android:layout_gravity="center"
         android:clickable="true"
         android:gravity="center"
         android:orientation="vertical"
+        android:paddingBottom="30dp"
         android:visibility="gone">
 
         <ImageView
@@ -62,4 +60,4 @@
             android:textColor="@color/message_text_sub"
             android:textSize="13.4sp" />
     </LinearLayout>
-</FrameLayout>
+</merge>

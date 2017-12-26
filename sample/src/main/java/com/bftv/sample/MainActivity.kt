@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         error.setOnClickListener(this)
         failure.setOnClickListener(this)
         success.setOnClickListener(this)
+        messageView.setMessageImage(R.mipmap.ic_nodata_friend)
     }
 
     override fun onClick(v: View?) {
