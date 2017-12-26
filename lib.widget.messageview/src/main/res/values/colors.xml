@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="message_text_color">#333333</color>
+    <color name="message_text">#535d75</color>
+    <color name="message_text_sub">#9aa5b5</color>
+
+    <color name="message_text_dark">#d1d2d6</color>
+    <color name="message_text_sub_dark">#333333</color>
 
 </resources>

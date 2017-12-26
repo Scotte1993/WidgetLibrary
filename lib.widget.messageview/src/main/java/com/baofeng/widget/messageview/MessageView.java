@@ -5,7 +5,6 @@ package com.baofeng.widget.messageview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -48,6 +47,7 @@ public class MessageView extends FrameLayout {
     private View mProgress;
     private View mMessageLayout;
     private TextView mMessageText;
+    private TextView mSubMessageText;
     private TextView mRetryText;
     private ImageView mImageView;
     private boolean mRetryEnable = false;
@@ -74,32 +74,30 @@ public class MessageView extends FrameLayout {
         mMessageLayout = view.findViewById(R.id.MessageViewLayout);
         mImageView = (ImageView) view.findViewById(R.id.image);
         mMessageText = (TextView) view.findViewById(R.id.message);
+        mSubMessageText = (TextView) view.findViewById(R.id.subMessage);
         mRetryText = (TextView) view.findViewById(R.id.retry);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MessageView, defStyle, 0);
         mColorMode = a.getInt(R.styleable.MessageView_colorMode, COLOR_MODE_LIGHT);
         a.recycle();
         setMode();
-
     }
 
     private void setMode() {
         switch (mColorMode) {
             case COLOR_MODE_LIGHT:
-                mMessageText.setTextColor(getResources().getColor(R.color.message_text_color));
-                mRetryText.setTextColor(getResources().getColor(R.color.message_text_color));
+                mMessageText.setTextColor(getResources().getColor(R.color.message_text));
+                mSubMessageText.setTextColor(getResources().getColor(R.color.message_text_sub));
+                mRetryText.setTextColor(getResources().getColor(R.color.message_text_sub));
                 mRetryText.setBackgroundResource(R.drawable.nodata_retry_bg);
                 break;
             case COLOR_MODE_DARK:
-                mMessageText.setTextColor(Color.parseColor("#d1d2d6"));
-                mRetryText.setTextColor(Color.parseColor("#d1d2d6"));
+                mMessageText.setTextColor(getResources().getColor(R.color.message_text_dark));
+                mSubMessageText.setTextColor(getResources().getColor(R.color.message_text_sub_dark));
+                mRetryText.setTextColor(getResources().getColor(R.color.message_text_sub_dark));
                 mRetryText.setBackgroundResource(R.drawable.nodata_retry_bg_black);
                 break;
         }
-    }
-
-    public ImageView getImageView() {
-        return mImageView;
     }
 
     public void setMessageImage(int resId) {
@@ -111,25 +109,30 @@ public class MessageView extends FrameLayout {
         mMessageText.setTextColor(color);
     }
 
-    /**
-     * 设置提示的消息内容 </p>该内容会显示在布局中心，如果当前是loading状态，则显示为loading的消息，
-     * 如果非loading状态，则作为提示消息。
-     *
-     * @param text
-     */
-    public void setMessage(CharSequence text) {
-        mRetryText.setVisibility(mRetryText.getVisibility() != VISIBLE ? VISIBLE : GONE);
-        mMessageText.setText(text);
+    public void setSubMessageColor(int color) {
+        mSubMessageText.setTextColor(color);
     }
 
-    public void setOnRetryListener(OnClickListener retryListener) {
-        mRetryEnable = retryListener != null;
-        mRetryText.setOnClickListener(retryListener);
+    public void setMessage(CharSequence msg) {
+        mMessageText.setText(msg);
+    }
+
+    public void setMessage(CharSequence msg, CharSequence defaultMsg) {
+        mMessageText.setText(TextUtils.isEmpty(msg) ? defaultMsg : msg);
+    }
+
+    public void setSubMessage(CharSequence subMsg) {
+        mSubMessageText.setVisibility(TextUtils.isEmpty(subMsg) ? GONE : VISIBLE);
+        mSubMessageText.setText(subMsg);
     }
 
     public void setRetryText(String text) {
         mRetryEnable = TextUtils.isEmpty(text);
         mRetryText.setText(text);
+    }
+
+    public void setOnRetryListener(OnClickListener retryListener) {
+        mRetryText.setOnClickListener(retryListener);
     }
 
     public void setRetryTextColor(int resId) {
@@ -158,18 +161,19 @@ public class MessageView extends FrameLayout {
      * 没网络，网络错误，显示重试按钮
      */
     public void noNetwork() {
-        noNetwork(DEFAULT_MSG_NONETWORK);
+        noNetwork(null);
     }
 
-    /**
-     * 没网络，网络错误，显示msg
-     */
-    public void noNetwork(String msg) {
+    public void noNetwork(CharSequence msg) {
+        noNetwork(msg, null);
+    }
+
+    public void noNetwork(CharSequence msg, CharSequence subMsg) {
         this.setClickable(true);
         mProgress.setVisibility(View.GONE);
         mMessageLayout.setVisibility(VISIBLE);
-        mMessageText.setText(msg);
-        mMessageText.setVisibility(VISIBLE);
+        setMessage(msg, DEFAULT_MSG_NONETWORK);
+        setSubMessage(subMsg);
         mRetryEnable = true;
         mRetryText.setVisibility(VISIBLE);
         mImageView.setImageResource(mColorMode == COLOR_MODE_LIGHT ? R.mipmap.ic_nodata_network : R.mipmap.ic_nodata_network_dark);
@@ -179,16 +183,20 @@ public class MessageView extends FrameLayout {
      * 空数据状态，status为200，但数据为空
      */
     public void empty() {
-        empty(DEFAULT_MSG_EMPTY);
+        empty(null);
     }
 
-    public void empty(CharSequence message) {
+    public void empty(CharSequence msg) {
+        empty(msg, null);
+    }
+
+    public void empty(CharSequence msg, CharSequence subMsg) {
         this.setClickable(true);
         setVisibility(VISIBLE);
         mProgress.setVisibility(View.GONE);
         mMessageLayout.setVisibility(VISIBLE);
-        mMessageText.setText(message);
-        mMessageText.setVisibility(VISIBLE);
+        setMessage(msg, DEFAULT_MSG_EMPTY);
+        setSubMessage(subMsg);
         mRetryText.setVisibility(mRetryEnable ? VISIBLE : GONE);
         if (mImageResId != 0) {
             mImageView.setImageResource(mImageResId);
@@ -197,72 +205,52 @@ public class MessageView extends FrameLayout {
         }
     }
 
+    /**
+     * 错误状态
+     */
     public void error() {
-        error(DEFAULT_MSG_ERROR);
+        error(null);
     }
 
-    /**
-     * 数据错误，status不为200，显示错误信息
-     */
     public void error(CharSequence msg) {
+        error(msg, null);
+    }
+
+    public void error(CharSequence msg, CharSequence subMsg) {
         this.setClickable(true);
         mProgress.setVisibility(View.GONE);
         mMessageLayout.setVisibility(VISIBLE);
-        mMessageText.setText(msg);
-        mMessageText.setVisibility(VISIBLE);
+        setMessage(msg, DEFAULT_MSG_ERROR);
+        setSubMessage(subMsg);
         mImageView.setImageResource(R.mipmap.ic_nodata_error);
         mRetryText.setVisibility(mRetryEnable ? VISIBLE : GONE);
     }
 
     public void setStatus(int flag) {
-        switch (flag) {
-            case LOADING:
-//                setVisibility(VISIBLE);
-                loading();
-                setRetryEnable(false);
-                break;
-            case EMPTY:
-                setVisibility(VISIBLE);
-                empty();
-                break;
-            case ERROR:
-                setVisibility(VISIBLE);
-                error();
-                break;
-            case NONE_NETWORK:
-                setVisibility(VISIBLE);
-                noNetwork();
-                break;
-            case SUCCESS:
-                setVisibility(GONE);
-                mProgress.setVisibility(View.GONE);
-                break;
-            case RELOADING:
-                setVisibility(VISIBLE);
-                loading();
-                setRetryEnable(false);
-                break;
-        }
+        setStatus(flag, null);
     }
 
     public void setStatus(int flag, String msg) {
+        setStatus(flag, msg, null);
+    }
+
+    public void setStatus(int flag, String msg, String subMsg) {
         switch (flag) {
             case LOADING:
-//                setVisibility(VISIBLE);
                 loading();
                 setRetryEnable(false);
                 break;
             case EMPTY:
                 setVisibility(VISIBLE);
-                empty(msg);
+                empty(msg, subMsg);
                 break;
             case ERROR:
                 setVisibility(VISIBLE);
-                error(msg);
+                error(msg, subMsg);
                 break;
             case NONE_NETWORK:
                 setVisibility(VISIBLE);
-                noNetwork(msg);
+                noNetwork(msg, subMsg);
                 break;
             case SUCCESS:
                 setVisibility(GONE);

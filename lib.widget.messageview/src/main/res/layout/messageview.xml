@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ProgressBar
         android:id="@android:id/progress"
         style="@style/progress_messageview"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 
     <LinearLayout
         android:id="@+id/MessageViewLayout"
@@ -23,33 +23,42 @@
             android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/app_name"
-            android:gravity="center"
-            android:padding="6dp"/>
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="18dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="4.8dp"
             android:clickable="false"
             android:gravity="center"
-            android:textColor="@color/message_text_color"
-            android:textSize="12sp"/>
+            android:textColor="@color/message_text"
+            android:textSize="15.4sp"
+            android:textStyle="bold"
+            tools:text="需要访问你的通讯录" />
+
+        <TextView
+            android:id="@+id/subMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4.3dp"
+            android:gravity="center"
+            android:textColor="@color/message_text_sub"
+            android:textSize="13.4sp"
+            android:visibility="gone"
+            tools:text="发起聊天或视频通话后，显示在这里" />
 
         <TextView
             android:id="@+id/retry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="81.6dp"
+            android:layout_height="30.7dp"
+            android:layout_marginTop="11.7dp"
             android:background="@drawable/nodata_retry_bg"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:padding="6dp"
-            android:text="点击重试"
-            android:textColor="@color/message_text_color"
-            android:textSize="10sp"/>
-
+            android:text="@string/click_retry"
+            android:textColor="@color/message_text_sub"
+            android:textSize="13.4sp" />
     </LinearLayout>
-
 </FrameLayout>
