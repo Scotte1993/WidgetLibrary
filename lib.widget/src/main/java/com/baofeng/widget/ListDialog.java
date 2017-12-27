@@ -58,7 +58,7 @@ public class ListDialog extends Dialog {
 
     private void initUI() {
         mListView = (ListView) findViewById(android.R.id.list);
-        mActionMenu = findViewById(R.id.ActionMenu);
+        mActionMenu = findViewById(R.id.actionMenu);
         mButton1 = (TextView) findViewById(android.R.id.button1);
         mButton1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +113,7 @@ public class ListDialog extends Dialog {
      *
      * @param has
      */
-    public void setHasActionMenu(boolean has) {
+    public void setShowActionMenu(boolean has) {
         mActionMenu.setVisibility(has ? View.VISIBLE : View.GONE);
     }
 
@@ -231,8 +231,8 @@ public class ListDialog extends Dialog {
             return this;
         }
 
-        public Builder setShowActionMenu(boolean isShow) {
-            mParams.isShowActionMenu = isShow;
+        public Builder setShowCancelButton(boolean isShow) {
+            mParams.setShowActionMenu = isShow;
             return this;
         }
 
@@ -246,12 +246,8 @@ public class ListDialog extends Dialog {
             ListDialog dialog = new ListDialog(mParams.mContext);
             dialog.setList(mParams.mList);
             dialog.setOnItemClickListener(mParams.mOnItemClickListener);
-            if (!mParams.isShowActionMenu) {
-                dialog.setHasActionMenu(mParams.isShowActionMenu);
-            }
-            if (mParams.isLand) {
-                dialog.setLandScape(mParams.isLand);
-            }
+            dialog.setShowActionMenu(mParams.setShowActionMenu);
+            dialog.setLandScape(mParams.isLand);
             if (!TextUtils.isEmpty(mParams.mButtonText)) {
                 dialog.setButtonText(mParams.mButtonText, mParams.mOnButtonClickListener);
             }
@@ -269,8 +265,8 @@ public class ListDialog extends Dialog {
         public Context mContext;
         public String[] mList;
         public OnClickListener mOnItemClickListener;
-        public boolean isShowActionMenu = true;
-        public boolean isLand;
+        public boolean setShowActionMenu = true;
+        public boolean isLand = false;
         public String mButtonText;
         public View.OnClickListener mOnButtonClickListener;
 

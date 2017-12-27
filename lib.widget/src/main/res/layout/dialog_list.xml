@@ -1,9 +1,8 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:layout_margin="10dp"
+    android:layout_margin="9.6dp"
     android:orientation="vertical">
 
     <ListView
@@ -11,32 +10,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@drawable/ic_dialog_bg"
+        android:background="@drawable/dialog_bg"
         android:choiceMode="singleChoice"
-        android:divider="@color/line_gray"
+        android:divider="@drawable/dialog_divider"
         android:dividerHeight="0.3dp"
-        android:scrollbars="none"/>
+        android:scrollbars="none" />
 
-    <LinearLayout
-        android:id="@+id/ActionMenu"
+    <FrameLayout
+        android:id="@+id/actionMenu"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:layout_marginTop="-2dp"
-        android:background="@drawable/ic_dialog_bg"
-        android:visibility="visible">
+        android:layout_height="@dimen/dialog_item_height"
+        android:layout_marginTop="6.7dp"
+        android:background="@drawable/dialog_bg">
 
         <TextView
             android:id="@android:id/button1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/default_item_selector"
+            android:layout_height="@dimen/dialog_item_height"
+            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
-            android:text="取消"
-            android:textColor="@color/widget_text_color"
-            android:textSize="12sp"/>
-
-    </LinearLayout>
+            android:text="@string/cancel"
+            android:textColor="#7c83ff"
+            android:textSize="14.4sp" />
+    </FrameLayout>
 
 </LinearLayout>
