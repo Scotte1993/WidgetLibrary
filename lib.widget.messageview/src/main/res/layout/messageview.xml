@@ -49,8 +49,8 @@
 
         <TextView
             android:id="@+id/retry"
-            android:layout_width="81.6dp"
-            android:layout_height="30.7dp"
+            android:layout_width="@dimen/message_retry_width"
+            android:layout_height="@dimen/message_retry_height"
             android:layout_marginTop="11.7dp"
             android:background="@drawable/nodata_retry_bg"
             android:clickable="true"
