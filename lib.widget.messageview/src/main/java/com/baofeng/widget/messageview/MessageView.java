@@ -39,9 +39,10 @@ public class MessageView extends FrameLayout {
     public static final int SUCCESS = 4;
     public static final int RELOADING = 5;
 
-    public static final String DEFAULT_MSG_NONETWORK = "网络连接异常，请检查您的网络状态";
-    public static final String DEFAULT_MSG_ERROR = "数据异常";
     public static final String DEFAULT_MSG_EMPTY = "暂无数据";
+    public static final String DEFAULT_MSG_ERROR = "数据异常";
+    public static final String DEFAULT_MSG_NONETWORK = "网络异常";
+    public static final String DEFAULT_SUBMSG_NONETWORK = "网络连接异常，请检查您的网络状态";
 
 
     private View mProgress;
@@ -122,8 +123,13 @@ public class MessageView extends FrameLayout {
     }
 
     public void setSubMessage(CharSequence subMsg) {
-        mSubMessageText.setVisibility(TextUtils.isEmpty(subMsg) ? GONE : VISIBLE);
-        mSubMessageText.setText(subMsg);
+        setSubMessage(subMsg, null);
+    }
+
+    public void setSubMessage(CharSequence subMsg, CharSequence defaultSubMsg) {
+        CharSequence text = TextUtils.isEmpty(subMsg) ? defaultSubMsg : subMsg;
+        mSubMessageText.setVisibility(TextUtils.isEmpty(text) ? GONE : VISIBLE);
+        mSubMessageText.setText(text);
     }
 
     public void setRetryText(String text) {
@@ -173,10 +179,10 @@ public class MessageView extends FrameLayout {
         mProgress.setVisibility(View.GONE);
         mMessageLayout.setVisibility(VISIBLE);
         setMessage(msg, DEFAULT_MSG_NONETWORK);
-        setSubMessage(subMsg);
+        setSubMessage(subMsg, DEFAULT_SUBMSG_NONETWORK);
         mRetryEnable = true;
         mRetryText.setVisibility(VISIBLE);
-        mImageView.setImageResource(mColorMode == COLOR_MODE_LIGHT ? R.mipmap.ic_nodata_network : R.mipmap.ic_nodata_network_dark);
+        mImageView.setImageResource(R.mipmap.ic_nodata_network);
     }
 
     /**
@@ -270,7 +276,7 @@ public class MessageView extends FrameLayout {
     public static String getDefaultMsg(int code) {
         switch (code) {
             case NONE_NETWORK:
-                return DEFAULT_MSG_NONETWORK;
+                return DEFAULT_SUBMSG_NONETWORK;
             case ERROR:
                 return DEFAULT_MSG_ERROR;
             case EMPTY:
