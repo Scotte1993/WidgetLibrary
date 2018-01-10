@@ -1,7 +1,8 @@
-package com.bftv.sample
+package com.bftv.sample.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.bftv.sample.R.layout
 import com.bftv.sample.utils.DialogHelper
 import kotlinx.android.synthetic.main.activity_list_dialog.*
 
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_list_dialog.*
 class ListDialogActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_dialog)
+        setContentView(layout.activity_list_dialog)
         initView()
     }
 

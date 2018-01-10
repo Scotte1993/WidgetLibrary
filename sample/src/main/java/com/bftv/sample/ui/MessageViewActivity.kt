@@ -1,17 +1,19 @@
-package com.bftv.sample
+package com.bftv.sample.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.View.OnClickListener
 import com.baofeng.widget.messageview.MessageView
+import com.bftv.sample.R.layout
+import com.bftv.sample.R.mipmap
 import kotlinx.android.synthetic.main.activity_message_view.*
 
 class MessageViewActivity : AppCompatActivity(), OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_message_view)
+        setContentView(layout.activity_message_view)
         initView()
     }
 
@@ -21,7 +23,7 @@ class MessageViewActivity : AppCompatActivity(), OnClickListener {
         error.setOnClickListener(this)
         failure.setOnClickListener(this)
         success.setOnClickListener(this)
-        messageView.setMessageImage(R.mipmap.ic_nodata_friend)
+        messageView.setMessageImage(mipmap.ic_nodata_friend)
     }
 
     override fun onClick(v: View?) {

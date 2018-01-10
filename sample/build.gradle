@@ -32,6 +32,7 @@ dependencies {
     implementation lib['kotlin-stdlib-jre7']
     implementation lib['appcompat-v7']
 
-    implementation project(':lib.widget.messageview')
     implementation project(':lib.widget')
+    implementation project(':lib.widget.messageview')
+    implementation project(':lib.widget.titlebar')
 }
