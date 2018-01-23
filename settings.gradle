@@ -1,6 +1,6 @@
 //include ':app'
 include ':lib.widget'
-//include ':lib.widget.searchbar'
+include ':lib.widget.searchbar'
 //include ':lib.widget.indicator'
 include ':lib.widget.messageview'
 include ':sample'
