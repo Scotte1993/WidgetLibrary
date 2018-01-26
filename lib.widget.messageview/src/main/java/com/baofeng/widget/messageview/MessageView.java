@@ -43,6 +43,8 @@ public class MessageView extends FrameLayout {
     public static final String DEFAULT_MSG_ERROR = "数据异常";
     public static final String DEFAULT_MSG_NONETWORK = "网络异常";
     public static final String DEFAULT_SUBMSG_NONETWORK = "网络连接异常，请检查您的网络状态";
+    public static final String DEFAULT_ERROR_RETRY_TEXT = "点击重试";
+    public static final String DEFAULT_NONETWORK_RETRY_TEXT = "点击重试";
 
 
     private View mProgress;
@@ -53,6 +55,7 @@ public class MessageView extends FrameLayout {
     private ImageView mImageView;
     private boolean mRetryEnable = false;
     private int mImageResId;
+    private int mStatus;
 
     private int mColorMode = COLOR_MODE_LIGHT;
 
@@ -241,6 +244,7 @@ public class MessageView extends FrameLayout {
     }
 
     public void setStatus(int flag, String msg, String subMsg) {
+        mStatus = flag;
         switch (flag) {
             case LOADING:
                 loading();
@@ -253,10 +257,12 @@ public class MessageView extends FrameLayout {
             case ERROR:
                 setVisibility(VISIBLE);
                 error(msg, subMsg);
+                setRetryText(DEFAULT_ERROR_RETRY_TEXT);
                 break;
             case NONE_NETWORK:
                 setVisibility(VISIBLE);
                 noNetwork(msg, subMsg);
+                setRetryText(DEFAULT_NONETWORK_RETRY_TEXT);
                 break;
             case SUCCESS:
                 setVisibility(GONE);
@@ -283,5 +289,12 @@ public class MessageView extends FrameLayout {
                 return DEFAULT_MSG_EMPTY;
         }
         return null;
+    }
+
+    /**
+     * 获取当前状态
+     */
+    public int getStatus() {
+        return mStatus;
     }
 }
