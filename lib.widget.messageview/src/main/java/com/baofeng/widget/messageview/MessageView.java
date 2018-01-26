@@ -55,7 +55,7 @@ public class MessageView extends FrameLayout {
     private ImageView mImageView;
     private boolean mRetryEnable = false;
     private int mImageResId;
-    private int mStatus;
+    private int status;
 
     private int mColorMode = COLOR_MODE_LIGHT;
 
@@ -136,7 +136,6 @@ public class MessageView extends FrameLayout {
     }
 
     public void setRetryText(String text) {
-        mRetryEnable = TextUtils.isEmpty(text);
         mRetryText.setText(text);
     }
 
@@ -183,6 +182,7 @@ public class MessageView extends FrameLayout {
         mMessageLayout.setVisibility(VISIBLE);
         setMessage(msg, DEFAULT_MSG_NONETWORK);
         setSubMessage(subMsg, DEFAULT_SUBMSG_NONETWORK);
+        setRetryText(DEFAULT_NONETWORK_RETRY_TEXT);
         mRetryEnable = true;
         mRetryText.setVisibility(VISIBLE);
         mImageView.setImageResource(R.mipmap.ic_nodata_network);
@@ -206,6 +206,7 @@ public class MessageView extends FrameLayout {
         mMessageLayout.setVisibility(VISIBLE);
         setMessage(msg, DEFAULT_MSG_EMPTY);
         setSubMessage(subMsg);
+        mRetryEnable = false;
         mRetryText.setVisibility(mRetryEnable ? VISIBLE : GONE);
         if (mImageResId != 0) {
             mImageView.setImageResource(mImageResId);
@@ -231,6 +232,8 @@ public class MessageView extends FrameLayout {
         mMessageLayout.setVisibility(VISIBLE);
         setMessage(msg, DEFAULT_MSG_ERROR);
         setSubMessage(subMsg);
+        mRetryEnable = true;
+        setRetryText(DEFAULT_ERROR_RETRY_TEXT);
         mImageView.setImageResource(R.mipmap.ic_nodata_error);
         mRetryText.setVisibility(mRetryEnable ? VISIBLE : GONE);
     }
@@ -244,7 +247,7 @@ public class MessageView extends FrameLayout {
     }
 
     public void setStatus(int flag, String msg, String subMsg) {
-        mStatus = flag;
+        status = flag;
         switch (flag) {
             case LOADING:
                 loading();
@@ -257,12 +260,10 @@ public class MessageView extends FrameLayout {
             case ERROR:
                 setVisibility(VISIBLE);
                 error(msg, subMsg);
-                setRetryText(DEFAULT_ERROR_RETRY_TEXT);
                 break;
             case NONE_NETWORK:
                 setVisibility(VISIBLE);
                 noNetwork(msg, subMsg);
-                setRetryText(DEFAULT_NONETWORK_RETRY_TEXT);
                 break;
             case SUCCESS:
                 setVisibility(GONE);
@@ -295,6 +296,6 @@ public class MessageView extends FrameLayout {
      * 获取当前状态
      */
     public int getStatus() {
-        return mStatus;
+        return status;
     }
 }
