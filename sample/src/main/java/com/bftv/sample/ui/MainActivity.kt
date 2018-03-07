@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         messageView.setOnClickListener(this)
         listDialog.setOnClickListener(this)
         titleBar.setOnClickListener(this)
+        tvAdbarview.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             messageView -> launch(MessageViewActivity::class.java)
             listDialog -> launch(ListDialogActivity::class.java)
             titleBar -> launch(TitleBarActivity::class.java)
+            tvAdbarview -> launch(AdBarViewActivity::class.java)
         }
     }
 }

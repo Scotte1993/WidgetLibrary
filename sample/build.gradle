@@ -35,4 +35,5 @@ dependencies {
     implementation project(':lib.widget')
     implementation project(':lib.widget.messageview')
     implementation project(':lib.widget.titlebar')
+    compile project(path: ':lib.widget.adbarview')
 }
