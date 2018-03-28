@@ -28,5 +28,9 @@ class AdBarViewActivity : AppCompatActivity() {
         items.add("这是第7个")
 
         mv_bar1.startWithList(items)
+
+        mv_bar2.post {
+            mv_bar2.initData(items)
+        }
     }
 }
