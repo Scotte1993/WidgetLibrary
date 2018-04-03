@@ -30,7 +30,12 @@ class AdBarViewActivity : AppCompatActivity() {
         mv_bar1.startWithList(items)
 
         mv_bar2.post {
-            mv_bar2.initData(items)
+            mv_bar2.initData(listOf("一项的时候"))
+            mv_bar2.postDelayed({
+                mv_bar2.initData(items)
+            },5000)
         }
+
+
     }
 }

@@ -93,17 +93,24 @@ public class ScrollAdView extends FrameLayout {
             return;
         }
 
+        if (adList == null && adList.size() == 0) {
+            return;
+        }
+
+        this.removeAllViews();
+
         height = this.getMeasuredHeight();
         linearLayoutContent = new LinearLayout(context);
         linearLayoutContent.setOrientation(LinearLayout.VERTICAL);
-        linearLayoutContent.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height * 2));  //!!! 必须设置height ，否则为AT_MOST
-
         stringList = adList;
 
-        for (int i = 0; i < 2; i++) {
+        if (adList.size() == 1) {
+
+            linearLayoutContent.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height));
+
             TextView tv = new TextView(context);
             tv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height));
-            tv.setText(stringList.get(i));
+            tv.setText(stringList.get(0));
             tv.setGravity(gravity);
 
             tv.setSingleLine();
@@ -114,11 +121,32 @@ public class ScrollAdView extends FrameLayout {
             tv.setTextColor(textColor);
 
             linearLayoutContent.addView(tv);
+            this.addView(linearLayoutContent);
+
+        } else {
+            linearLayoutContent.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height * 2));  //!!! 必须设置height ，否则为AT_MOST
+
+            for (int i = 0; i < 2; i++) {
+                TextView tv = new TextView(context);
+                tv.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, height));
+                tv.setText(stringList.get(i));
+                tv.setGravity(gravity);
+
+                tv.setSingleLine();
+                tv.setEllipsize(TextUtils.TruncateAt.END);
+
+                //变成动态
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, textSize);
+                tv.setTextColor(textColor);
+
+                linearLayoutContent.addView(tv);
+            }
+
+            this.addView(linearLayoutContent);
+
+            initAnimation();
         }
 
-        this.addView(linearLayoutContent);
-
-        initAnimation();
     }
 
     /**
@@ -126,6 +154,14 @@ public class ScrollAdView extends FrameLayout {
      */
     public void updateContentList(List<String> adList) {
         stringList = adList;
+        initData(adList);
+    }
+
+    /**
+     * 获取当前的stringlist
+     */
+    public List<String> getStringList() {
+        return stringList;
     }
 
     /**
