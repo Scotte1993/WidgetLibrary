@@ -1,7 +1,7 @@
 //include ':app'
 include ':lib.widget', ':lib.widget.adbarview'
 include ':lib.widget.searchbar'
-//include ':lib.widget.indicator'
+include ':lib.widget.indicator'
 include ':lib.widget.messageview'
 include ':sample'
 include ':lib.widget.titlebar'

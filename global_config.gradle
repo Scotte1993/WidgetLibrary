@@ -1,7 +1,7 @@
 ext {
     configuration = [
             compileSdkVersion: 26,
-            buildToolsVersion: '26.0.2',
+            buildToolsVersion: '27.0.3',
             minSdkVersion    : 17,
             targetSdkVersion : 26,
             versionCode      : 1,
@@ -9,7 +9,7 @@ ext {
     ]
 
     support_version = '26.1.0'
-    anko_version = '0.10.1'
+    anko_version = '0.10.4'
 
     aar = [
             "debug"               : [name: 'debug-1.2.0', ext: 'aar'],

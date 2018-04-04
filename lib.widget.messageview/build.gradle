@@ -26,6 +26,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile lib['kotlin-stdlib-jre7']
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api lib['kotlin-stdlib-jre7']
 }
