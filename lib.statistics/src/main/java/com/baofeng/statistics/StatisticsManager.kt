@@ -1,6 +1,7 @@
 package com.baofeng.statistics
 
 import android.content.Context
+import com.bftv.fui.analytics.FAConstant
 
 /**
  * 统计管理类
@@ -10,7 +11,7 @@ import android.content.Context
  */
 object StatisticsManager : StatisticsInterface {
 
-    val list = ArrayList<StatisticsInterface>()
+    private val list = ArrayList<StatisticsInterface>()
 
     fun add(bean: StatisticsInterface) {
 
@@ -22,7 +23,12 @@ object StatisticsManager : StatisticsInterface {
         list.forEach {
             it.init(context)
         }
+    }
 
+    override fun updateUser(userType: FAConstant.UserType, userId: String) {
+        list.forEach {
+            it.updateUser(userType, userId)
+        }
     }
 
     override fun faceTimeDail() {
@@ -99,6 +105,30 @@ object StatisticsManager : StatisticsInterface {
 
         list.forEach {
             it.faceTimehandUpTo()
+        }
+    }
+
+    override fun faceTimeAddressBook() {
+        list.forEach {
+            it.faceTimeAddressBook()
+        }
+    }
+
+    override fun faceTimeRecords() {
+        list.forEach {
+            it.faceTimeRecords()
+        }
+    }
+
+    override fun faceTimeMutedVideo() {
+        list.forEach {
+            it.faceTimeMutedVideo()
+        }
+    }
+
+    override fun faceTimeMutedAudio() {
+        list.forEach {
+            it.faceTimeMutedAudio()
         }
     }
 }
