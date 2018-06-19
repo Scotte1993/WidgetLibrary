@@ -28,14 +28,14 @@ class FloatViewGroup : FrameLayout {
 //    private val marginLeft = 0.0f
 //    private val marginRight = 0.0f
 
-    private var mTranslationY = 0.0f
-    private var mTranslationX = 0.0f
-    private var downY = 0f
+    private var downTranslationX = 0.0f
+    private var downTranslationY = 0.0f
     private var downX = 0f
+    private var downY = 0f
 
     private var animator: ObjectAnimator? = null
-    private var isMove = false
-    private var minMovePx = 0
+    private var isMove = false //是否移动，没有移动,模拟点击
+    private var minMovePx = 0 //最小移动距离
 
     constructor(context: Context) : super(context) {
         init()
@@ -61,26 +61,23 @@ class FloatViewGroup : FrameLayout {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                mTranslationY = translationY
-                mTranslationX = translationX
+                downTranslationX = translationX
+                downTranslationY = translationY
                 downX = event.rawX
                 downY = event.rawY
                 isMove = false
             }
             MotionEvent.ACTION_MOVE -> {
-
-                if (Math.abs(event.rawY - downX) > 5 && Math.abs(event.rawX - downX) > 5) {
+                if (Math.abs(event.rawY - downY) > minMovePx && Math.abs(event.rawX - downX) > minMovePx) {
                     isMove = true
                 }
-
-                translationY = mTranslationY + event.rawY - downY
-                translationX = mTranslationX + event.rawX - downX
-
-                if (translationY > 0) translationY = 0.0f
-                if (translationY < -(parentHeight - height)) translationY = -(parentHeight - height)
-
+                translationX = downTranslationX + event.rawX - downX
                 if (translationX > 0) translationX = 0.0f
                 if (translationX < -(parentWidth - width)) translationX = -(parentWidth - width)
+
+                translationY = downTranslationY + event.rawY - downY
+                if (translationY > 0) translationY = 0.0f
+                if (translationY < -(parentHeight - height)) translationY = -(parentHeight - height)
             }
             MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
                 val t = if ((parentWidth - width) / 2 + translationX > 0) 0.0f else -(parentWidth - width)
