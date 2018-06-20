@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.widget.FrameLayout
 import android.widget.LinearLayout
@@ -33,7 +32,9 @@ class SlideView : RelativeLayout {
     private var minMovePx = 0 //最小移动距离
     private var clickListener: ClickListener? = null
     private lateinit var container: FrameLayout
-    private var isStretch = false
+    private var isStretch = false //是否是展开状态
+    private var hastrend = false//是否确定趋势了
+    private var trendPx = 0.0f //确定趋势的px值
 
     constructor(context: Context) : super(context) {
         init()
@@ -49,19 +50,25 @@ class SlideView : RelativeLayout {
 
     private fun init() {
         minMovePx = dp2px(context, MIN_MOVE)
+        trendPx = dp2px(context, MIN_MOVE) * 2.0f
         LayoutInflater.from(context).inflate(R.layout.view_slide, this, true)
-        this.post {
-            handleWidth = findViewById<LinearLayout>(R.id.llHandle).width.toFloat()
-            handleHeight = findViewById<LinearLayout>(R.id.llHandle).height.toFloat()
-            container = findViewById(R.id.container)
-            findViewById<View>(R.id.btnDelete).setOnClickListener {
+        container = findViewById(R.id.container)
+        findViewById<View>(R.id.btnDelete).setOnClickListener {
+            if (isStretch) {
                 clickListener?.clickDelete()
                 shrink()
             }
-            findViewById<View>(R.id.btnNickName).setOnClickListener {
+
+        }
+        findViewById<View>(R.id.btnNickName).setOnClickListener {
+            if (isStretch) {
                 clickListener?.clickAddNick()
                 shrink()
             }
+        }
+        this.post {
+            handleWidth = findViewById<LinearLayout>(R.id.llHandle).width.toFloat()
+            handleHeight = findViewById<LinearLayout>(R.id.llHandle).height.toFloat()
         }
     }
 
@@ -69,16 +76,18 @@ class SlideView : RelativeLayout {
         clickListener = listener
     }
 
-    fun addContainerView(view: ViewGroup) {
+    fun addContainerView(view: View) {
+        container.removeAllViews()
         container.addView(view)
     }
 
     /**
      * 收缩
      */
-    private fun shrink() {
+    fun shrink(noAnimation: Boolean = false) {
         isStretch = false
-        startAnimation(0.0f)
+        if(noAnimation) startAnimation(0.0f,0L) else startAnimation(0.0f)
+
     }
 
     /**
@@ -120,13 +129,25 @@ class SlideView : RelativeLayout {
                 if (Math.abs(event.rawY - downY) > minMovePx && Math.abs(event.rawX - downX) > minMovePx) {
                     isMove = true
                 }
+                if (Math.abs(event.rawY - downY) > trendPx || Math.abs(event.rawX - downX) > trendPx) {
+                    hastrend = true
+
+                    if (Math.abs(event.rawY - downY) < Math.abs(event.rawX - downX)) {
+                        requestDisallowInterceptTouchEvent(true)
+                    } else {
+                        return false
+                    }
+                }
                 var x = downTranslationX + event.rawX - downX
                 if (x > 0) x = 0.0f
                 if (x < -handleWidth) x = -handleWidth
                 container.translationX = x
             }
             MotionEvent.ACTION_CANCEL, MotionEvent.ACTION_UP -> {
-                val t = if (container.translationX < -handleWidth / 2) -handleWidth else 0.0f
+                val t = if (container.translationX < -handleWidth / 2) {
+                    isStretch = true
+                    -handleWidth
+                } else 0.0f
                 startAnimation(t)
                 if (!isMove) {
                     performClick()
@@ -136,9 +157,9 @@ class SlideView : RelativeLayout {
         return true
     }
 
-    private fun startAnimation(t: Float) {
+    private fun startAnimation(t: Float, duration: Long = 100L) {
         animator = ObjectAnimator.ofFloat(container, "translationX", container.translationX, t)
-        animator?.duration = 100L
+        animator?.duration = duration
         animator?.interpolator = AccelerateInterpolator()
         animator?.start()
     }
