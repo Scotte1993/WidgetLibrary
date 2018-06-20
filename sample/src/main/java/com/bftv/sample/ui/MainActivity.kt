@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         titleBar.setOnClickListener(this)
         tvAdbarview.setOnClickListener(this)
         tvFloatView.setOnClickListener(this)
+        tvSlide.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -30,7 +31,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             listDialog -> launch(ListDialogActivity::class.java)
             titleBar -> launch(TitleBarActivity::class.java)
             tvAdbarview -> launch(AdBarViewActivity::class.java)
-            tvFloatView->launch(FloatViewActivity::class.java)
+            tvFloatView -> launch(FloatViewActivity::class.java)
+            tvSlide -> launch(SlideActivity::class.java)
         }
     }
 }

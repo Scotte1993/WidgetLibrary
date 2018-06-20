@@ -30,7 +30,8 @@
             android:name=".ui.AdBarViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.FloatViewActivity"></activity>
+        <activity android:name=".ui.FloatViewActivity" />
+        <activity android:name=".ui.SlideActivity"/>
     </application>
 
 </manifest>

@@ -38,4 +38,5 @@ dependencies {
     implementation project(':lib.widget.adbarview')
     implementation project(':lib.statistics')
     implementation project(':lib.widget.floatviewgroup')
+    implementation project(':lib.widget.slide')
 }

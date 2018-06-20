@@ -60,4 +60,15 @@
 
     <include layout="@layout/line_h" />
 
+    <TextView
+        android:id="@+id/tvSlide"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="侧滑删除"
+        android:textColor="#777" />
+
+    <include layout="@layout/line_h" />
+
 </LinearLayout>
