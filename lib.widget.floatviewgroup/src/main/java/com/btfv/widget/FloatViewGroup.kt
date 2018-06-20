@@ -58,14 +58,34 @@ class FloatViewGroup : FrameLayout {
         minMovePx = dp2px(context, MIN_MOVE)
     }
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        when (event.action) {
+    override fun onInterceptTouchEvent(event: MotionEvent?): Boolean {
+        var intercept = false
+        when (event?.action) {
             MotionEvent.ACTION_DOWN -> {
                 downTranslationX = translationX
                 downTranslationY = translationY
                 downX = event.rawX
                 downY = event.rawY
                 isMove = false
+                intercept = false
+            }
+            MotionEvent.ACTION_MOVE -> {
+                if (Math.abs(event.rawY - downY) > minMovePx && Math.abs(event.rawX - downX) > minMovePx) {
+                    isMove = true
+                    intercept = true
+                }
+            }
+            else -> {
+                intercept = false
+            }
+        }
+        return intercept
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
             }
             MotionEvent.ACTION_MOVE -> {
                 if (Math.abs(event.rawY - downY) > minMovePx && Math.abs(event.rawX - downX) > minMovePx) {

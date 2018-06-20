@@ -13,7 +13,11 @@ class FloatViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_float_view)
 
         floatView.setOnClickListener {
-            Toast.makeText(this,"click",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "click", Toast.LENGTH_SHORT).show()
+        }
+
+        ChildFloatView.setOnClickListener {
+            Toast.makeText(this, "ChildClick", Toast.LENGTH_SHORT).show()
         }
     }
 }
