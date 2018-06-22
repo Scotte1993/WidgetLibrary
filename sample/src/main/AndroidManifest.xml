@@ -31,7 +31,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.FloatViewActivity" />
-        <activity android:name=".ui.SlideActivity"/>
+        <activity android:name=".ui.SlideActivity" />
+        <activity android:name=".ui.DialPlateActivity"></activity>
     </application>
 
 </manifest>

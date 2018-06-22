@@ -3,6 +3,7 @@ package com.bftv.widget
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -50,7 +51,7 @@ class SlideView : RelativeLayout {
 
     private fun init() {
         minMovePx = dp2px(context, MIN_MOVE)
-        trendPx = dp2px(context, MIN_MOVE) * 2.0f
+        trendPx = dp2px(context, MIN_MOVE) * 1.0f
         LayoutInflater.from(context).inflate(R.layout.view_slide, this, true)
         container = findViewById(R.id.container)
         findViewById<View>(R.id.btnDelete).setOnClickListener {
@@ -86,7 +87,7 @@ class SlideView : RelativeLayout {
      */
     fun shrink(noAnimation: Boolean = false) {
         isStretch = false
-        if(noAnimation) startAnimation(0.0f,0L) else startAnimation(0.0f)
+        if (noAnimation) startAnimation(0.0f, 0L) else startAnimation(0.0f)
 
     }
 
@@ -126,6 +127,7 @@ class SlideView : RelativeLayout {
             MotionEvent.ACTION_DOWN -> {
             }
             MotionEvent.ACTION_MOVE -> {
+                Log.e("onTouch", "=============onTouchEvent======Move=======")
                 if (Math.abs(event.rawY - downY) > minMovePx && Math.abs(event.rawX - downX) > minMovePx) {
                     isMove = true
                 }

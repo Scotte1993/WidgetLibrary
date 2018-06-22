@@ -6,5 +6,5 @@
     <com.bftv.widget.SlideView
         android:id="@+id/slideView"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="100dp" />
 </LinearLayout>

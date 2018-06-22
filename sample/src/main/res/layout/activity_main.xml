@@ -71,4 +71,15 @@
 
     <include layout="@layout/line_h" />
 
+    <TextView
+        android:id="@+id/tvDialPlate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="拨号盘"
+        android:textColor="#777" />
+
+    <include layout="@layout/line_h" />
+
 </LinearLayout>

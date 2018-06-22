@@ -40,4 +40,5 @@ dependencies {
     implementation project(':lib.statistics')
     implementation project(':lib.widget.floatviewgroup')
     implementation project(':lib.widget.slide')
+    implementation project(':lib.widget.dialplate')
 }
