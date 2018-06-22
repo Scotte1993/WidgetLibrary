@@ -1,4 +1,4 @@
-package com.btfv.widget
+package com.bftv.widget.floatview
 
 import android.animation.ObjectAnimator
 import android.content.Context

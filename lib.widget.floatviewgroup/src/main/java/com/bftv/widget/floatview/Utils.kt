@@ -1,4 +1,4 @@
-package com.bftv.widget
+package com.bftv.widget.floatview
 
 import android.content.Context
 import android.util.TypedValue

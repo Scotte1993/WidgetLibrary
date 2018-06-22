@@ -13,7 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bftv.sample.R
-import com.bftv.widget.SlideView
+import com.bftv.widget.slide.SlideView
 import kotlinx.android.synthetic.main.activity_slide.*
 import android.support.v7.widget.DividerItemDecoration
 

@@ -1,4 +1,4 @@
-package com.btfv.widget
+package com.bftv.widget.slide
 
 import android.content.Context
 import android.util.TypedValue

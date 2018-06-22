@@ -1,4 +1,4 @@
-package com.bftv.widget
+package com.bftv.widget.slide
 
 import android.animation.ObjectAnimator
 import android.content.Context
