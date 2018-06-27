@@ -29,7 +29,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation lib['kotlin-stdlib-jre7']
+    implementation lib['kotlin-stdlib-jdk7']
     implementation lib['appcompat-v7']
 
     implementation project(':lib.widget')

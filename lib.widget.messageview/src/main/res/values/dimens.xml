@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="message_retry_width">81.6dp</dimen>
-    <dimen name="message_retry_height">30.7dp</dimen>
+    <dimen name="message_retry_width">96dp</dimen>
+    <dimen name="message_retry_height">38.4dp</dimen>
 </resources>

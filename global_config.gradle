@@ -72,7 +72,7 @@ ext {
 
             // kotlin
             "kotlin-stdlib"                  : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
-            "kotlin-stdlib-jre7"             : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
+            "kotlin-stdlib-jdk7"             : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
 
             // anko
             "anko-commons"                   : "org.jetbrains.anko:anko-commons:$anko_version",

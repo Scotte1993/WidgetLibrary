@@ -26,6 +26,6 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api lib['kotlin-stdlib-jre7']
+    api lib['kotlin-stdlib-jdk7']
     api lib['appcompat-v7']
 }
