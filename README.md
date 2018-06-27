@@ -14,3 +14,9 @@ ViewPager底部的小点
 
 ## SearchBar
  简单的搜索条
+
+## adbarview
+ 上下滚动广告自定义控件
+
+## statistics
+  统计
