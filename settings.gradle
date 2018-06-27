@@ -1,5 +1,5 @@
 //include ':app'
-include ':lib.widget', ':lib.widget.adbarview', ':lib.statistics', ':lib.widget.floatviewgroup', ':lib.widget.dialplate'
+include ':lib.widget', ':lib.widget.adbarview', ':lib.statistics', ':lib.widget.floatviewgroup', ':lib.widget.dialplate', ':lib.widget.phonedial'
 include ':lib.widget.searchbar'
 //include ':lib.widget.indicator'
 include ':lib.widget.messageview'

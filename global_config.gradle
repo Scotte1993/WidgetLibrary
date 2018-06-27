@@ -65,6 +65,7 @@ ext {
             "support-vector-drawable"        : "com.android.support:support-vector-drawable:$support_version",
             "design"                         : "com.android.support:design:$support_version",
             "recyclerview-v7"                : "com.android.support:recyclerview-v7:$support_version",
+            "gridlayout-v7"                  : "com.android.support:gridlayout-v7:$support_version",
             "cardview-v7"                    : "com.android.support:cardview-v7:$support_version",
             "leanback-v17"                   : "com.android.support:leanback-v17:$support_version",
             "multidex"                       : "com.android.support:multidex:1.0.1",

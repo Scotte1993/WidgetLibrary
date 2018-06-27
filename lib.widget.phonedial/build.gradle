@@ -1,8 +1,10 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 def cfg = rootProject.ext.configuration
 def lib = rootProject.ext.libraries
+def aar = rootProject.ext.aar
 
 android {
     compileSdkVersion cfg.compileSdkVersion
@@ -23,7 +25,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
