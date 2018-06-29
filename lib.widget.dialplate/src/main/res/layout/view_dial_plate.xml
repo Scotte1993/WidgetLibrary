@@ -105,9 +105,7 @@
 
         <FrameLayout
             android:id="@+id/flDial"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            style="@style/dial_image_view"
             android:background="@drawable/view_dial_button">
 
             <ImageView
@@ -122,9 +120,7 @@
 
         <FrameLayout
             android:id="@+id/flDelete"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            style="@style/dial_image_view"
             android:background="@drawable/view_dial_number_selector">
 
             <ImageView
