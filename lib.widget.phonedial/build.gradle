@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 def cfg = rootProject.ext.configuration
 def lib = rootProject.ext.libraries
@@ -16,8 +17,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,9 +29,5 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-//    compile lib['kotlin-stdlib-jdk7']
-//    compile lib['appcompat-v7']
-
-    api aar['resources']
-    api aar['utils']
+    api lib['kotlin-stdlib-jdk7']
 }

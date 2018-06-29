@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.View.OnClickListener
-import com.bftv.sample.R.layout
+import com.bftv.sample.R
+import com.bftv.sample.R.id.*
 import com.bftv.sample.launch
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layout.activity_main)
+        setContentView(R.layout.activity_main)
         initView()
     }
 

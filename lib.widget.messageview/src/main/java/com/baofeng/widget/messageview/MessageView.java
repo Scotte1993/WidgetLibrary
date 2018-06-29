@@ -5,6 +5,7 @@ package com.baofeng.widget.messageview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -43,8 +44,8 @@ public class MessageView extends FrameLayout {
     public static final String DEFAULT_MSG_ERROR = "数据异常";
     public static final String DEFAULT_MSG_NONETWORK = "网络异常";
     public static final String DEFAULT_SUBMSG_NONETWORK = "网络连接异常，请检查您的网络状态";
-    public static final String DEFAULT_ERROR_RETRY_TEXT = "点击重试";
-    public static final String DEFAULT_NONETWORK_RETRY_TEXT = "点击重试";
+    public static final String DEFAULT_ERROR_RETRY_TEXT = "重试";
+    public static final String DEFAULT_NONETWORK_RETRY_TEXT = "重试";
 
 
     private View mProgress;
@@ -92,7 +93,7 @@ public class MessageView extends FrameLayout {
             case COLOR_MODE_LIGHT:
                 mMessageText.setTextColor(getResources().getColor(R.color.message_text));
                 mSubMessageText.setTextColor(getResources().getColor(R.color.message_text_sub));
-                mRetryText.setTextColor(getResources().getColor(R.color.message_text_sub));
+                mRetryText.setTextColor(Color.WHITE);
                 mRetryText.setBackgroundResource(R.drawable.nodata_retry_bg);
                 break;
             case COLOR_MODE_DARK:
@@ -107,6 +108,10 @@ public class MessageView extends FrameLayout {
     public void setMessageImage(int resId) {
         mImageResId = resId;
         mImageView.setImageResource(resId);
+    }
+
+    public void setMessageImageEnable(boolean enable) {
+        mImageView.setVisibility(enable ? VISIBLE : GONE);
     }
 
     public void setMessageColor(int color) {

@@ -29,9 +29,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation lib['kotlin-stdlib-jre7']
+    implementation lib['kotlin-stdlib-jdk7']
     implementation lib['appcompat-v7']
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation lib['recyclerview-v7']
 
     implementation project(':lib.widget')
     implementation project(':lib.widget.messageview')
@@ -41,4 +41,5 @@ dependencies {
     implementation project(':lib.widget.floatviewgroup')
     implementation project(':lib.widget.slide')
     implementation project(':lib.widget.dialplate')
+    implementation project(':lib.widget.phonedial')
 }
