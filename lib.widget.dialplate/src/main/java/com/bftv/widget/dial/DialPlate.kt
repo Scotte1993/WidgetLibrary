@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 
@@ -34,28 +35,26 @@ class DialPlate : LinearLayout, View.OnClickListener {
     }
 
     private fun init() {
-        LayoutInflater.from(context).inflate(R.layout.view_dial_plate, this)
-        findViewById<TextView>(R.id.tv0).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv1).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv2).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv3).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv4).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv5).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv6).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv8).setOnClickListener(this)
-        findViewById<TextView>(R.id.tv9).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvPhoneNumber).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvDelete).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvClear).setOnClickListener(this)
-        findViewById<TextView>(R.id.tvDial).setOnClickListener(this)
+        if (context != null) {
+            LayoutInflater.from(context).inflate(R.layout.view_dial_plate, this)
+            findViewById<TextView>(R.id.tv0).setOnClickListener(this)
+            findViewById<TextView>(R.id.tv1).setOnClickListener(this)
+            findViewById<TextView>(R.id.tv2).setOnClickListener(this)
+            findViewById<TextView>(R.id.tv3).setOnClickListener(this)
+            findViewById<TextView>(R.id.tv4).setOnClickListener(this)
+            findViewById<TextView>(R.id.tv5).setOnClickListener(this)
+            findViewById<TextView>(R.id.tv6).setOnClickListener(this)
+            findViewById<TextView>(R.id.tv7).setOnClickListener(this)
+            findViewById<TextView>(R.id.tv8).setOnClickListener(this)
+            findViewById<TextView>(R.id.tv9).setOnClickListener(this)
+            findViewById<FrameLayout>(R.id.flDelete).setOnClickListener(this)
+            findViewById<FrameLayout>(R.id.flDial).setOnClickListener(this)
+        }
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.tvClear -> {
-                findViewById<TextView>(R.id.tvPhoneNumber).text = ""
-            }
-            R.id.tvDelete -> {
+            R.id.flDelete -> {
                 val tvPhoneNumber = findViewById<TextView>(R.id.tvPhoneNumber)
                 if (tvPhoneNumber.text.toString().isEmpty()) {
                     return
@@ -63,20 +62,18 @@ class DialPlate : LinearLayout, View.OnClickListener {
                     tvPhoneNumber.text = tvPhoneNumber.text.toString().substring(0, tvPhoneNumber.text.length - 1)
                 }
             }
-            R.id.tvPhoneNumber -> {
-            }
-            R.id.tvDial -> {
+            R.id.flDial -> {
                 val tvPhoneNumber = findViewById<TextView>(R.id.tvPhoneNumber)
-                if (tvPhoneNumber.text.toString().isEmpty()) {
-                    return
-                }
                 dialClick?.click(tvPhoneNumber.text.toString())
             }
             else -> {
                 v?.let {
                     val index = numberId.indexOf(v.id)
                     index?.let {
-                        findViewById<TextView>(R.id.tvPhoneNumber).append(number[index])
+                        val tvPhoneNumber = findViewById<TextView>(R.id.tvPhoneNumber)
+                        if (tvPhoneNumber.text.toString().trim().length < 11) {
+                            findViewById<TextView>(R.id.tvPhoneNumber).append(number[index])
+                        }
                     }
                 }
             }
