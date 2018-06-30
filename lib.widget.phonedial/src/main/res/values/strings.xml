@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Lib.PhoneDial</string>
-    <string name="dial_hint">请输入要拨打的设备号或手机号</string>
+    <string name="dial_hint">输入设备号或手机号</string>
 </resources>
