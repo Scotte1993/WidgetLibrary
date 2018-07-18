@@ -1,10 +1,12 @@
 package com.bftv.widget.dial
 
 import android.content.Context
+import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 
@@ -14,7 +16,7 @@ import android.widget.TextView
  * @author chengxiaobo
  * @time 2018/6/22 15:01
  */
-class DialPlate : LinearLayout, View.OnClickListener {
+class DialPlate : LinearLayout, View.OnClickListener, View.OnFocusChangeListener {
     companion object {
         val number = listOf("0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
         val numberId = listOf(R.id.tv0, R.id.tv1, R.id.tv2, R.id.tv3, R.id.tv4, R.id.tv5, R.id.tv6, R.id.tv7, R.id.tv8, R.id.tv9)
@@ -37,18 +39,16 @@ class DialPlate : LinearLayout, View.OnClickListener {
     private fun init() {
         if (context != null) {
             LayoutInflater.from(context).inflate(R.layout.view_dial_plate, this)
-            findViewById<TextView>(R.id.tv0).setOnClickListener(this)
-            findViewById<TextView>(R.id.tv1).setOnClickListener(this)
-            findViewById<TextView>(R.id.tv2).setOnClickListener(this)
-            findViewById<TextView>(R.id.tv3).setOnClickListener(this)
-            findViewById<TextView>(R.id.tv4).setOnClickListener(this)
-            findViewById<TextView>(R.id.tv5).setOnClickListener(this)
-            findViewById<TextView>(R.id.tv6).setOnClickListener(this)
-            findViewById<TextView>(R.id.tv7).setOnClickListener(this)
-            findViewById<TextView>(R.id.tv8).setOnClickListener(this)
-            findViewById<TextView>(R.id.tv9).setOnClickListener(this)
+
+            for (i in numberId) {
+                findViewById<TextView>(i).onFocusChangeListener = this
+                findViewById<TextView>(i).setOnClickListener(this)
+            }
             findViewById<FrameLayout>(R.id.flDelete).setOnClickListener(this)
+            findViewById<FrameLayout>(R.id.flDelete).onFocusChangeListener = this
+
             findViewById<FrameLayout>(R.id.flDial).setOnClickListener(this)
+            findViewById<FrameLayout>(R.id.flDial).onFocusChangeListener = this
         }
     }
 
@@ -77,6 +77,26 @@ class DialPlate : LinearLayout, View.OnClickListener {
                     }
                 }
             }
+        }
+    }
+
+    fun getDailNumTextView(): TextView {
+        return (findViewById(R.id.tvPhoneNumber))
+    }
+
+    override fun onFocusChange(v: View?, hasFocus: Boolean) {
+        if (hasFocus) {
+
+            ViewCompat.animate(v).scaleX(1.05f).scaleY(1.05f).translationZ(1.0f).start()
+        } else {
+            ViewCompat.animate(v).scaleX(1f).scaleY(1f).translationZ(0.0f).start()
+        }
+        if (v?.id == R.id.flDelete) {
+            findViewById<ImageView>(R.id.ivDelete).isSelected = hasFocus
+        }
+
+        if (v?.id == R.id.flDial) {
+            findViewById<ImageView>(R.id.ivDial).isSelected = hasFocus
         }
     }
 

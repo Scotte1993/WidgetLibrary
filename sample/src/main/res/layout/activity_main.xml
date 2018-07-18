@@ -85,6 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height"
         android:background="?android:attr/selectableItemBackground"
+        android:focusable="true"
         android:gravity="center"
         android:text="TV拨号盘"
         android:textColor="#777" />
