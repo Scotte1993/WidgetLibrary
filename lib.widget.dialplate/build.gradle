@@ -29,4 +29,5 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api lib['kotlin-stdlib-jdk7']
+    implementation "com.android.support:appcompat-v7:25.0.0"
 }
