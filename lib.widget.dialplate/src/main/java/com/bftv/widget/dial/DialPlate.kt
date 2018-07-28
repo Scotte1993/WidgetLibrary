@@ -87,8 +87,10 @@ class DialPlate : LinearLayout, View.OnClickListener, View.OnFocusChangeListener
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
         if (hasFocus) {
 
+            ViewCompat.setTranslationZ(v?.parent as View, 1.0f)
             ViewCompat.animate(v).scaleX(1.05f).scaleY(1.05f).translationZ(1.0f).start()
         } else {
+            ViewCompat.setTranslationZ(v?.parent as View, 0.0f)
             ViewCompat.animate(v).scaleX(1f).scaleY(1f).translationZ(0.0f).start()
         }
         if (v?.id == R.id.flDelete) {
