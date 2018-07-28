@@ -17,7 +17,7 @@
         android:maxLength="11"
         android:singleLine="true"
         android:textColor="@color/dial_text_primary"
-        android:textColorHint="@color/dial_text_tertiary"
+        android:textColorHint="#80a1aab6"
         android:textSize="20.9sp" />
 
     <include layout="@layout/dial_line_h" />

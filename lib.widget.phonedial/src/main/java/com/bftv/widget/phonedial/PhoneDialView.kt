@@ -43,6 +43,10 @@ class PhoneDialView : FrameLayout, OnClickListener {
         findViewById<TextView>(R.id.number9).setOnClickListener(this)
         findViewById<ImageView>(R.id.dialCall).setOnClickListener(this)
         findViewById<ImageView>(R.id.dialDel).setOnClickListener(this)
+        findViewById<ImageView>(R.id.dialDel).setOnLongClickListener {
+            textDialNumber?.text = null
+            true
+        }
 
         textDialNumber = findViewById(R.id.textDialNumber)
         textDialNumber?.addTextChangedListener(object : TextWatcher {
