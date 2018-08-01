@@ -44,7 +44,6 @@
         <TextView
             android:id="@+id/tv3"
             style="@style/dial_button"
-            android:nextFocusRight="@id/tv4"
             android:text="3" />
 
         <View style="@style/dial_line_v" />
@@ -60,7 +59,6 @@
         <TextView
             android:id="@+id/tv4"
             style="@style/dial_button"
-            android:nextFocusLeft="@id/tv3"
             android:text="4" />
 
         <View style="@style/dial_line_v" />
@@ -75,7 +73,6 @@
         <TextView
             android:id="@+id/tv6"
             style="@style/dial_button"
-            android:nextFocusRight="@id/tv7"
             android:text="6" />
 
         <View style="@style/dial_line_v" />
@@ -92,7 +89,6 @@
         <TextView
             android:id="@+id/tv7"
             style="@style/dial_button"
-            android:nextFocusLeft="@id/tv6"
             android:text="7" />
 
         <View style="@style/dial_line_v" />
@@ -107,7 +103,6 @@
         <TextView
             android:id="@+id/tv9"
             style="@style/dial_button"
-            android:nextFocusRight="@id/tv0"
             android:text="9" />
 
         <View style="@style/dial_line_v" />
@@ -124,7 +119,6 @@
         <TextView
             android:id="@+id/tv0"
             style="@style/dial_button"
-            android:nextFocusLeft="@id/tv9"
             android:text="0" />
 
         <View style="@style/dial_line_v" />
