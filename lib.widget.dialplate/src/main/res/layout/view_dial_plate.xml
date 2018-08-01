@@ -16,7 +16,9 @@
         android:layout_marginRight="17.3dp"
         android:background="@drawable/view_show_number"
         android:gravity="center"
+        android:hint="输入设备号或手机号"
         android:textColor="#ffffff"
+        android:textColorHint="#80a1aab6"
         android:textSize="33.3sp"
         tools:text="183 1009 5359" />
 
