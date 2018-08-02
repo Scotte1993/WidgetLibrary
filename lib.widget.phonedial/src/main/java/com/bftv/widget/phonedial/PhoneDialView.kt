@@ -44,7 +44,7 @@ class PhoneDialView : FrameLayout, OnClickListener {
         findViewById<ImageView>(R.id.dialCall).setOnClickListener(this)
         findViewById<ImageView>(R.id.dialDel).setOnClickListener(this)
         findViewById<ImageView>(R.id.dialDel).setOnLongClickListener {
-            textDialNumber?.text = null
+            setDialNumber(null)
             true
         }
 
@@ -83,7 +83,13 @@ class PhoneDialView : FrameLayout, OnClickListener {
     private fun callNumber() {
         val text = textDialNumber?.text.toString()
         listener?.onDialNumber(text)
-        textDialNumber?.text = null
+    }
+
+    /**
+     * 设置号码
+     */
+    fun setDialNumber(number: String?) {
+        textDialNumber?.setText(number)
     }
 
     fun setOnDialNumberListener(listener: OnDialNumberListener) {
