@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.View.OnClickListener
 import com.bftv.sample.R
-import com.bftv.sample.R.id.*
 import com.bftv.sample.launch
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             tvAdbarview -> launch(AdBarViewActivity::class.java)
             tvFloatView -> launch(FloatViewActivity::class.java)
             tvSlide -> launch(SlideActivity::class.java)
-            tvDialPlate -> launch(DialPlateActivity::class.java)
+            tvDialPlate -> launch(PhoneDialActivity::class.java)
             tvDialPlateForTv -> launch(TVDialPlateActivity::class.java)
         }
     }

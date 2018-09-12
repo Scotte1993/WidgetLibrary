@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
@@ -21,6 +22,7 @@ import android.widget.TextView
 class PhoneDialView : FrameLayout, OnClickListener {
 
     private var textDialNumber: EditText? = null
+    private var dialCall: TextView? = null
     private var listener: OnDialNumberListener? = null
 
     constructor(context: Context?) : this(context, null)
@@ -41,12 +43,14 @@ class PhoneDialView : FrameLayout, OnClickListener {
         findViewById<TextView>(R.id.number7).setOnClickListener(this)
         findViewById<TextView>(R.id.number8).setOnClickListener(this)
         findViewById<TextView>(R.id.number9).setOnClickListener(this)
-        findViewById<ImageView>(R.id.dialCall).setOnClickListener(this)
         findViewById<ImageView>(R.id.dialDel).setOnClickListener(this)
         findViewById<ImageView>(R.id.dialDel).setOnLongClickListener {
             setDialNumber(null)
             true
         }
+        dialCall = findViewById(R.id.dialCall)
+        dialCall?.setOnClickListener(this)
+        initDialCall()
 
         textDialNumber = findViewById(R.id.textDialNumber)
         textDialNumber?.addTextChangedListener(object : TextWatcher {
@@ -60,6 +64,12 @@ class PhoneDialView : FrameLayout, OnClickListener {
                 textDialNumber?.textSize = if (s.isNullOrEmpty()) 20.9f else 26.9f
             }
         })
+    }
+
+    private fun initDialCall() {
+        val screenWidth = context.resources.displayMetrics.widthPixels
+        val textWidth = sp2px(context, 26.9f)
+        dialCall?.layoutParams?.width = screenWidth * 2 / 3 + textWidth
     }
 
     override fun onClick(v: View?) {
@@ -100,4 +110,10 @@ class PhoneDialView : FrameLayout, OnClickListener {
         fun onDialNumber(number: String?)
     }
 
+    /**
+     * SP转PX
+     */
+    private fun sp2px(context: Context, sp: Float): Int {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.resources.displayMetrics).toInt()
+    }
 }

@@ -4,12 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff000"
-    tools:context="com.bftv.sample.ui.DialPlateActivity">
-
-    <!--<com.bftv.widget.dial.DialPlate-->
-    <!--android:id="@+id/dialPlate"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content" />-->
+    tools:context="com.bftv.sample.ui.PhoneDialActivity">
 
     <com.bftv.widget.phonedial.PhoneDialView
         android:id="@+id/dialPlate"

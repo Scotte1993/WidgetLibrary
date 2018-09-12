@@ -10,7 +10,7 @@ android {
     compileSdkVersion cfg.compileSdkVersion
     buildToolsVersion cfg.buildToolsVersion
     defaultConfig {
-        applicationId "com.baofeng.tool.sample"
+        applicationId "com.bftv.widget.sample"
         minSdkVersion cfg.minSdkVersion
         targetSdkVersion cfg.targetSdkVersion
         versionCode cfg.versionCode
