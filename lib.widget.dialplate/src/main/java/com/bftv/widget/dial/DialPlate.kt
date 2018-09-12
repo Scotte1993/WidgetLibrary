@@ -84,6 +84,54 @@ class DialPlate : LinearLayout, View.OnClickListener, View.OnFocusChangeListener
         return (findViewById(R.id.tvPhoneNumber))
     }
 
+    fun getTextView1(): TextView {
+        return (findViewById(R.id.tv1))
+    }
+
+    fun getTextView2(): TextView {
+        return (findViewById(R.id.tv2))
+    }
+
+    fun getTextView3(): TextView {
+        return (findViewById(R.id.tv3))
+    }
+
+    fun getTextView4(): TextView {
+        return (findViewById(R.id.tv4))
+    }
+
+    fun getTextView5(): TextView {
+        return (findViewById(R.id.tv5))
+    }
+
+    fun getTextView6(): TextView {
+        return (findViewById(R.id.tv6))
+    }
+
+    fun getTextView7(): TextView {
+        return (findViewById(R.id.tv7))
+    }
+
+    fun getTextView8(): TextView {
+        return (findViewById(R.id.tv8))
+    }
+
+    fun getTextView9(): TextView {
+        return (findViewById(R.id.tv9))
+    }
+
+    fun getTextView0(): TextView {
+        return (findViewById(R.id.tv0))
+    }
+
+    fun getFrameLayoutDail(): FrameLayout {
+        return (findViewById(R.id.flDial))
+    }
+
+    fun getFrameLayoutDelete(): FrameLayout {
+        return (findViewById(R.id.flDelete))
+    }
+
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
         if (hasFocus) {
 
