@@ -2,6 +2,8 @@ package com.bftv.sample.utils
 
 import android.content.Context
 import android.content.DialogInterface
+import com.baofeng.widget.EditDialog
+import com.baofeng.widget.EditDialog.OnSubmitListener
 import com.baofeng.widget.ListDialog
 import com.baofeng.widget.LoadingDialog
 import com.baofeng.widget.ToastDialog
@@ -53,6 +55,30 @@ object DialogHelper {
                 .setMessage(msg)
                 .setCancelable(false)
                 .setCanceledOnTouchOutside(false)
+                .show()
+    }
+
+    /**
+     * 显示编辑对话框
+     * @param context
+     * @param message
+     * @param positiveListener
+     * @return
+     */
+    fun showEditDialog(context: Context, title: String?, message: String?, hint: String?, positiveListener: OnSubmitListener? = null): EditDialog {
+        return EditDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setHint(hint)
+                .setPositiveButton(positiveListener)
+                .show()
+    }
+
+    fun showEditDialog(context: Context, title: String?, message: String?, positiveListener: OnSubmitListener? = null): EditDialog {
+        return EditDialog.Builder(context)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton(positiveListener)
                 .show()
     }
 

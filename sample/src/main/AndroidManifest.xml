@@ -20,7 +20,7 @@
             android:name=".ui.MessageViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.ListDialogActivity"
+            android:name=".ui.DialogActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.TitleBarActivity"

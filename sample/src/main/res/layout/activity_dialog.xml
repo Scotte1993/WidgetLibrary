@@ -10,12 +10,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="1" />
+        android:text="ListDialog1"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnDouble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="2" />
+        android:text="ListDialog2"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="EditDialog"
+        android:textAllCaps="false" />
 </LinearLayout>

@@ -5,7 +5,9 @@
 
     <color name="widget_text_color">#535d75</color>
     <color name="widget_text_sub">#999999</color>
-    <color name="widget_text_sel">#3462ff</color>
+    <color name="widget_text_sel">#2877ff</color>
 
     <color name="dialog_line">#4dc8cfd8</color>
+    <color name="dialog_edit_line">#d8d8d8</color>
+    <color name="dialog_edit_text">#32394a</color>
 </resources>

@@ -17,12 +17,12 @@
     <include layout="@layout/line_h" />
 
     <TextView
-        android:id="@+id/listDialog"
+        android:id="@+id/dialog"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height"
         android:background="?android:attr/selectableItemBackground"
         android:gravity="center"
-        android:text="ListDialog"
+        android:text="Dialog"
         android:textColor="#777" />
 
     <include layout="@layout/line_h" />
