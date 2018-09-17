@@ -3,6 +3,7 @@ package com.baofeng.widget;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -12,8 +13,11 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.baofeng.utils.InputUtils;
+
 /**
  * 编辑对话框
+ *
  * @author Junpu
  * @time 2018/9/13 14:33
  */
@@ -76,6 +80,7 @@ public class EditDialog extends Dialog implements OnClickListener {
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.cancel) {
+            InputUtils.hideInputMethod(getContext(), view);
             if (mNegativeListener != null) {
                 mNegativeListener.onClick(this, id);
             }
@@ -165,6 +170,28 @@ public class EditDialog extends Dialog implements OnClickListener {
         setPositiveButton(listener);
     }
 
+    /**
+     * 设置单行显示
+     */
+    public void setSingleLine(boolean singleLine) {
+        mEditText.setSingleLine(singleLine);
+    }
+
+    /**
+     * 设置最大行数
+     */
+    public void setMaxLines(int maxLines) {
+        mEditText.setMaxLines(maxLines);
+    }
+
+    /**
+     * 设置最大字数
+     */
+    public void setMaxLength(int maxLength) {
+        InputFilter inputFilter = new InputFilter.LengthFilter(maxLength);
+        mEditText.setFilters(new InputFilter[]{inputFilter});
+    }
+
 
     public static class Builder {
         private Context mContext;
@@ -175,6 +202,9 @@ public class EditDialog extends Dialog implements OnClickListener {
         private OnSubmitListener mOnSubmitListener;
         private String mNegativeText;
         private String mPositiveText;
+        private boolean mSingleLine;
+        private int mMaxLines;
+        private int mMaxLength;
 
         public Builder(Context context) {
             mContext = context;
@@ -232,6 +262,21 @@ public class EditDialog extends Dialog implements OnClickListener {
             return this;
         }
 
+        public EditDialog.Builder setSingleLine(boolean singleLine) {
+            mSingleLine = singleLine;
+            return this;
+        }
+
+        public EditDialog.Builder setMaxLines(int maxLines) {
+            mMaxLines = maxLines;
+            return this;
+        }
+
+        public EditDialog.Builder setMaxLength(int maxLength) {
+            mMaxLength = maxLength;
+            return this;
+        }
+
         public EditDialog create() {
             EditDialog dialog = new EditDialog(mContext);
             dialog.setTitle(mTitle);
@@ -248,6 +293,13 @@ public class EditDialog extends Dialog implements OnClickListener {
             }
             if (mOnSubmitListener != null) {
                 dialog.setPositiveButton(mOnSubmitListener);
+            }
+            dialog.setSingleLine(true);
+            if (mMaxLines > 0) {
+                dialog.setMaxLines(mMaxLines);
+            }
+            if (mMaxLength > 0) {
+                dialog.setMaxLength(mMaxLength);
             }
             return dialog;
         }

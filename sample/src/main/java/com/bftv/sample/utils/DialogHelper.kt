@@ -71,6 +71,8 @@ object DialogHelper {
                 .setMessage(message)
                 .setHint(hint)
                 .setPositiveButton(positiveListener)
+                .setSingleLine(true)
+                .setMaxLength(5)
                 .show()
     }
 
