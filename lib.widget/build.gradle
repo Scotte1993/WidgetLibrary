@@ -7,7 +7,6 @@ def aar = rootProject.ext.aar
 
 android {
     compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion cfg.buildToolsVersion
 
     defaultConfig {
         minSdkVersion cfg.minSdkVersion

@@ -8,7 +8,6 @@ def aar = rootProject.ext.aar
 
 android {
     compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion cfg.buildToolsVersion
 
     defaultConfig {
         minSdkVersion cfg.minSdkVersion
@@ -29,5 +28,5 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api lib['kotlin-stdlib-jdk7']
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

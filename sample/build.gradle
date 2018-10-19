@@ -8,7 +8,6 @@ def aar = rootProject.ext.aar
 
 android {
     compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion cfg.buildToolsVersion
     defaultConfig {
         applicationId "com.bftv.widget.sample"
         minSdkVersion cfg.minSdkVersion
@@ -29,9 +28,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation lib['kotlin-stdlib-jdk7']
-    implementation lib['appcompat-v7']
-    implementation lib['recyclerview-v7']
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:recyclerview-v7:$support_version"
 
     implementation project(':lib.widget')
     implementation project(':lib.widget.messageview')
