@@ -8,31 +8,37 @@ def aar = rootProject.ext.aar
 
 android {
     compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion cfg.buildToolsVersion
     defaultConfig {
-        applicationId "com.bftv.widget.app"
+        applicationId "com.bftv.widget.sample"
         minSdkVersion cfg.minSdkVersion
         targetSdkVersion cfg.targetSdkVersion
         versionCode cfg.versionCode
         versionName cfg.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation lib['kotlin-stdlib-jdk7']
-    implementation lib['appcompat-v7']
-//    compile lib['constraint-layout']
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:recyclerview-v7:$support_version"
 
-    implementation project(':lib.widget.searchbar')
     implementation project(':lib.widget')
-
-    implementation aar['debug']
+    implementation project(':lib.widget.messageview')
+    implementation project(':lib.widget.titlebar')
+    implementation project(':lib.widget.adbarview')
+    implementation project(':lib.statistics')
+    implementation project(':lib.widget.floatviewgroup')
+    implementation project(':lib.widget.slide')
+    implementation project(':lib.widget.dialplate')
+    implementation project(':lib.widget.phonedial')
 }

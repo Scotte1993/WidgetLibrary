@@ -1,13 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply from: 'https://raw.githubusercontent.com/abooc/debug/master/library/maven.gradle'
 
 def cfg = rootProject.ext.configuration
 def lib = rootProject.ext.libraries
 
 android {
     compileSdkVersion cfg.compileSdkVersion
-    buildToolsVersion cfg.buildToolsVersion
 
     defaultConfig {
         minSdkVersion cfg.minSdkVersion
@@ -26,6 +24,6 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api lib['kotlin-stdlib-jdk7']
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     api lib['appcompat-v7']
 }
