@@ -7,24 +7,23 @@ import android.widget.ListView;
 /**
  * 支持高度值为 wrap_content 的 {@link ListView}，解决原生 {@link ListView} 在设置高度为 wrap_content 时高度计算错误的 bug。
  */
-
-public class QMUIWrapContentListView extends ListView {
+public class WrapContentListView extends ListView {
     private int mMaxHeight = Integer.MAX_VALUE >> 2;
 
-    public QMUIWrapContentListView(Context context) {
+    public WrapContentListView(Context context) {
         super(context);
     }
 
-    public QMUIWrapContentListView(Context context, int maxHeight) {
+    public WrapContentListView(Context context, int maxHeight) {
         super(context);
         mMaxHeight = maxHeight;
     }
 
-    public QMUIWrapContentListView(Context context, AttributeSet attrs) {
+    public WrapContentListView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public QMUIWrapContentListView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WrapContentListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

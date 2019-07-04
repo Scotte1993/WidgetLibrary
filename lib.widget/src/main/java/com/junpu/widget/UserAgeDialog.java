@@ -1,4 +1,4 @@
-package com.baofeng.widget;
+package com.junpu.widget;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.widget.DatePicker.OnDateChangedListener;
 
 import com.baofeng.utils.ParseUtils;
 import com.baofeng.utils.WindowUtils;
+import com.baofeng.widget.R;
 
 /**
  * 用户选择生日dialog

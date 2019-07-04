@@ -1,4 +1,4 @@
-include ':app'
+include ':app', ':lib_widget_popupwindow'
 include ':lib.widget'
 include ':lib.widget.adbarview'
 include ':lib.statistics'

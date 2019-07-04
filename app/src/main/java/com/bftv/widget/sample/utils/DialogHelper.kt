@@ -2,11 +2,11 @@ package com.bftv.widget.sample.utils
 
 import android.content.Context
 import android.content.DialogInterface
-import com.baofeng.widget.EditDialog
-import com.baofeng.widget.EditDialog.OnSubmitListener
-import com.baofeng.widget.ListDialog
-import com.baofeng.widget.LoadingDialog
-import com.baofeng.widget.ToastDialog
+import com.junpu.widget.EditDialog
+import com.junpu.widget.EditDialog.OnSubmitListener
+import com.junpu.widget.ListDialog
+import com.junpu.widget.LoadingDialog
+import com.junpu.widget.ToastDialog
 
 /**
  * 快速生成对话框

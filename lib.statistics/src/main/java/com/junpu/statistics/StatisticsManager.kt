@@ -1,4 +1,4 @@
-package com.baofeng.statistics
+package com.junpu.statistics
 
 import android.content.Context
 import com.bftv.fui.analytics.FAConstant

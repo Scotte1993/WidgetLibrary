@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.View.OnClickListener
-import com.baofeng.widget.messageview.MessageView
+import com.junpu.widget.messageview.MessageView
 import com.bftv.widget.sample.R
 import kotlinx.android.synthetic.main.activity_message_view.*
 

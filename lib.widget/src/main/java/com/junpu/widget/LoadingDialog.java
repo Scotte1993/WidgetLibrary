@@ -1,4 +1,4 @@
-package com.baofeng.widget;
+package com.junpu.widget;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.baofeng.widget.R;
 
 /**
  * loading dialog

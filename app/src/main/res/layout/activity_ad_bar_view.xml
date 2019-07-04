@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".ui.AdBarViewActivity">
 
-    <com.baofeng.widget.AdBarView.AdView
+    <com.junpu.widget.AdBarView.AdView
         android:id="@+id/mv_bar1"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -16,9 +16,9 @@
         app:mvAnimDuration="1000"
         app:mvInterval="3000"
         app:mvTextColor="#ffffff"
-        app:mvTextSize="14sp"></com.baofeng.widget.AdBarView.AdView>
+        app:mvTextSize="14sp"></com.junpu.widget.AdBarView.AdView>
 
-    <com.baofeng.widget.AdBarView.ScrollAdView
+    <com.junpu.widget.AdBarView.ScrollAdView
         android:id="@+id/mv_bar2"
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -27,7 +27,7 @@
         app:mvAnimDuration="1000"
         app:mvInterval="3000"
         app:mvTextColor="#ffffff"
-        app:mvTextSize="15.2sp"></com.baofeng.widget.AdBarView.ScrollAdView>
+        app:mvTextSize="15.2sp"></com.junpu.widget.AdBarView.ScrollAdView>
 
 
 </LinearLayout>

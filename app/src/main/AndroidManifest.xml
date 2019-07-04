@@ -34,6 +34,9 @@
         <activity android:name=".ui.SlideActivity" />
         <activity android:name=".ui.PhoneDialActivity" />
         <activity android:name=".ui.TVDialPlateActivity" />
+        <activity
+            android:name=".ui.PopupWindowActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.baofeng.widget.searchbar;
+package com.junpu.widget.searchbar;
 
 import android.content.Context;
 import android.text.Editable;
@@ -15,6 +15,8 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+
+import com.baofeng.widget.searchbar.R;
 
 /**
  * @author Junpu

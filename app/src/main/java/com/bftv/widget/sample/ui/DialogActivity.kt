@@ -2,8 +2,8 @@ package com.bftv.widget.sample.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.baofeng.widget.EditDialog
-import com.baofeng.widget.EditDialog.OnSubmitListener
+import com.junpu.widget.EditDialog
+import com.junpu.widget.EditDialog.OnSubmitListener
 import com.bftv.widget.sample.R
 import com.bftv.widget.sample.utils.DialogHelper
 import kotlinx.android.synthetic.main.activity_dialog.*

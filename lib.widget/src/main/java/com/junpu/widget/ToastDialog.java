@@ -1,4 +1,4 @@
-package com.baofeng.widget;
+package com.junpu.widget;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+
+import com.baofeng.widget.R;
 
 /**
  * 提示对话框，用于展示一段文字

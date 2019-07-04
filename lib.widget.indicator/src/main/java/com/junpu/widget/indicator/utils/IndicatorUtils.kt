@@ -1,4 +1,4 @@
-package com.baofeng.widget.indicator.utils
+package com.junpu.widget.indicator.utils
 
 import android.content.Context
 import android.util.TypedValue

@@ -1,4 +1,4 @@
-package com.baofeng.widget.indicator;
+package com.junpu.widget.indicator;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.baofeng.widget.indicator.FragmentHandlerAdapter.TabInfo;
 
 /**
  * @author zhangjunpu
@@ -38,12 +37,12 @@ public class TabPagerManager {
         return this;
     }
 
-    public static TabInfo build(String name, Class<? extends Fragment> fragment) {
-        return new TabInfo(fragment, name, null);
+    public static FragmentHandlerAdapter.TabInfo build(String name, Class<? extends Fragment> fragment) {
+        return new FragmentHandlerAdapter.TabInfo(fragment, name, null);
     }
 
-    public static TabInfo build(String name, Class<? extends Fragment> fragment, Bundle arguments) {
-        return new TabInfo(fragment, name, arguments);
+    public static FragmentHandlerAdapter.TabInfo build(String name, Class<? extends Fragment> fragment, Bundle arguments) {
+        return new FragmentHandlerAdapter.TabInfo(fragment, name, arguments);
     }
 
     public TabPagerManager setDefaultPosition(int index) {

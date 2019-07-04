@@ -19,13 +19,10 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
-import com.junpu.widget.popupwindow.utils.QMUIDisplayHelper;
+import com.junpu.widget.popupwindow.utils.DisplayHelper;
 
-/**
- * 修改自 @author Lorensius W. L. T <lorenz@londatiga.net>
- */
-public abstract class QMUIBasePopup {
-    private static final String TAG = "QMUIBasePopup";
+public abstract class BasePopup {
+    private static final String TAG = "BasePopup";
     protected Context mContext;
     protected PopupWindow mWindow;
     private RootView mRootViewWrapper;
@@ -46,7 +43,7 @@ public abstract class QMUIBasePopup {
      *
      * @param context Context
      */
-    public QMUIBasePopup(Context context) {
+    public BasePopup(Context context) {
         mContext = context;
         mWindow = new PopupWindow(context);
         mWindow.setTouchInterceptor(new OnTouchListener() {
@@ -110,7 +107,6 @@ public abstract class QMUIBasePopup {
     public final void show(View view) {
         show(view, view);
     }
-
 
     public final void show(View parent, View anchorView) {
         if (!anchorView.isAttachedToWindow()) {
@@ -185,11 +181,11 @@ public abstract class QMUIBasePopup {
     }
 
     protected int makeWidthMeasureSpec() {
-        return View.MeasureSpec.makeMeasureSpec(QMUIDisplayHelper.getScreenWidth(mContext), View.MeasureSpec.AT_MOST);
+        return View.MeasureSpec.makeMeasureSpec(DisplayHelper.getScreenWidth(mContext), View.MeasureSpec.AT_MOST);
     }
 
     protected int makeHeightMeasureSpec() {
-        return View.MeasureSpec.makeMeasureSpec(QMUIDisplayHelper.getScreenHeight(mContext), View.MeasureSpec.AT_MOST);
+        return View.MeasureSpec.makeMeasureSpec(DisplayHelper.getScreenHeight(mContext), View.MeasureSpec.AT_MOST);
     }
 
 
@@ -218,7 +214,7 @@ public abstract class QMUIBasePopup {
         mWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
-                QMUIBasePopup.this.onDismiss();
+                BasePopup.this.onDismiss();
                 if (mDismissListener != null) {
                     mDismissListener.onDismiss();
                 }
@@ -269,7 +265,7 @@ public abstract class QMUIBasePopup {
             if (mWindow != null && mWindow.isShowing()) {
                 mWindow.dismiss();
             }
-            QMUIBasePopup.this.onConfigurationChanged(newConfig);
+            BasePopup.this.onConfigurationChanged(newConfig);
         }
 
         @Override

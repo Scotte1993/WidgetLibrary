@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.baofeng.widget;
+package com.junpu.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

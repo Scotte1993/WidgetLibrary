@@ -1,4 +1,4 @@
-package com.baofeng.widget.indicator;
+package com.junpu.widget.indicator;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -14,7 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.baofeng.widget.indicator.utils.IndicatorUtils;
+import com.baofeng.widget.indicator.R;
+import com.junpu.widget.indicator.utils.IndicatorUtils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -15,5 +15,5 @@ fun Context.launch(cls: Class<*>) {
 }
 
 fun Fragment.launch(cls: Class<*>) {
-    context.launch(cls)
+    context?.launch(cls)
 }

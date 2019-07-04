@@ -1,4 +1,4 @@
-package com.baofeng.widget;
+package com.junpu.widget;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.baofeng.utils.ToolUtils;
 import com.baofeng.utils.WindowUtils;
+import com.baofeng.widget.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.baofeng.widget.indicator;
+package com.junpu.widget.indicator;
 
 import android.content.Context;
 import android.os.Bundle;

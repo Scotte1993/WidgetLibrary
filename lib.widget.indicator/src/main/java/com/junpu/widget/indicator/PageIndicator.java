@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.baofeng.widget.indicator;
+package com.junpu.widget.indicator;
 
 import android.support.v4.view.ViewPager;
 

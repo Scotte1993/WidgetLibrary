@@ -1,4 +1,4 @@
-package com.baofeng.widget;
+package com.junpu.widget;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.baofeng.utils.InputUtils;
+import com.baofeng.widget.R;
 
 /**
  * 编辑对话框

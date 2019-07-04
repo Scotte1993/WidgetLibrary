@@ -1,4 +1,4 @@
-package com.baofeng.widget;
+package com.junpu.widget;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
+
+import com.baofeng.widget.R;
 
 
 /**

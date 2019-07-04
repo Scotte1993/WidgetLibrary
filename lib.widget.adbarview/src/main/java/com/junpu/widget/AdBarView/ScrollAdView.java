@@ -1,4 +1,4 @@
-package com.baofeng.widget.AdBarView;
+package com.junpu.widget.AdBarView;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -14,6 +14,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.baofeng.widget.AdBarView.R;
 
 import java.util.List;
 

@@ -17,7 +17,7 @@ import java.lang.annotation.RetentionPolicy;
  * 提供一个浮层，支持自定义浮层的内容，支持在指定 {@link View} 的任一方向旁边展示该浮层，支持自定义浮层出现/消失的动画。
  * <p>
  */
-public class QMUIPopup extends BasePopup {
+public class CustomPopup extends BasePopup {
     public static final int ANIM_GROW_FROM_LEFT = 1;
     public static final int ANIM_GROW_FROM_RIGHT = 2;
     public static final int ANIM_GROW_FROM_CENTER = 3;
@@ -45,11 +45,11 @@ public class QMUIPopup extends BasePopup {
     // 计算位置后的偏移y值，当浮层在View的下方时使用
     private int mOffsetYWhenBottom = 0;
 
-    public QMUIPopup(Context context) {
+    public CustomPopup(Context context) {
         this(context, DIRECTION_NONE);
     }
 
-    public QMUIPopup(Context context, @Direction int preferredDirection) {
+    public CustomPopup(Context context, @Direction int preferredDirection) {
         super(context);
         mAnimStyle = ANIM_AUTO;
         mPreferredDirection = preferredDirection;
@@ -176,25 +176,24 @@ public class QMUIPopup extends BasePopup {
         boolean onTop = mDirection == DIRECTION_TOP;
         switch (mAnimStyle) {
             case ANIM_GROW_FROM_LEFT:
-                mWindow.setAnimationStyle(onTop ? R.style.QMUI_Animation_PopUpMenu_Left : R.style.QMUI_Animation_PopDownMenu_Left);
+                mWindow.setAnimationStyle(onTop ? R.style.Pop_Animation_PopUpMenu_Left : R.style.Pop_Animation_PopDownMenu_Left);
                 break;
 
             case ANIM_GROW_FROM_RIGHT:
-                mWindow.setAnimationStyle(onTop ? R.style.QMUI_Animation_PopUpMenu_Right : R.style.QMUI_Animation_PopDownMenu_Right);
+                mWindow.setAnimationStyle(onTop ? R.style.Pop_Animation_PopUpMenu_Right : R.style.Pop_Animation_PopDownMenu_Right);
                 break;
 
             case ANIM_GROW_FROM_CENTER:
-                mWindow.setAnimationStyle(onTop ? R.style.QMUI_Animation_PopUpMenu_Center : R.style.QMUI_Animation_PopDownMenu_Center);
+                mWindow.setAnimationStyle(onTop ? R.style.Pop_Animation_PopUpMenu_Center : R.style.Pop_Animation_PopDownMenu_Center);
                 break;
             case ANIM_AUTO:
                 if (arrowPos <= screenWidth / 4) {
-                    mWindow.setAnimationStyle(onTop ? R.style.QMUI_Animation_PopUpMenu_Left : R.style.QMUI_Animation_PopDownMenu_Left);
+                    mWindow.setAnimationStyle(onTop ? R.style.Pop_Animation_PopUpMenu_Left : R.style.Pop_Animation_PopDownMenu_Left);
                 } else if (arrowPos > screenWidth / 4 && arrowPos < 3 * (screenWidth / 4)) {
-                    mWindow.setAnimationStyle(onTop ? R.style.QMUI_Animation_PopUpMenu_Center : R.style.QMUI_Animation_PopDownMenu_Center);
+                    mWindow.setAnimationStyle(onTop ? R.style.Pop_Animation_PopUpMenu_Center : R.style.Pop_Animation_PopDownMenu_Center);
                 } else {
-                    mWindow.setAnimationStyle(onTop ? R.style.QMUI_Animation_PopUpMenu_Right : R.style.QMUI_Animation_PopDownMenu_Right);
+                    mWindow.setAnimationStyle(onTop ? R.style.Pop_Animation_PopUpMenu_Right : R.style.Pop_Animation_PopDownMenu_Right);
                 }
-
                 break;
         }
     }
@@ -240,12 +239,11 @@ public class QMUIPopup extends BasePopup {
     @Override
     public void setContentView(View root) {
         @SuppressLint("InflateParams") FrameLayout layout = (FrameLayout) LayoutInflater.from(mContext)
-                .inflate(R.layout.qmui_popup_layout, null, false);
-        mArrowDown = (ImageView) layout.findViewById(R.id.arrow_down);
-        mArrowUp = (ImageView) layout.findViewById(R.id.arrow_up);
-        FrameLayout box = (FrameLayout) layout.findViewById(R.id.box);
+                .inflate(R.layout.popup_layout, null, false);
+        mArrowDown = layout.findViewById(R.id.arrow_down);
+        mArrowUp = layout.findViewById(R.id.arrow_up);
+        FrameLayout box = layout.findViewById(R.id.box);
         box.addView(root);
-
         super.setContentView(layout);
     }
 

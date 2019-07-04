@@ -1,4 +1,4 @@
-package com.baofeng.widget.searchbar;
+package com.junpu.widget.searchbar;
 
 import android.content.Context;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.baofeng.widget.titlebar;
+package com.junpu.widget.titlebar;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.baofeng.widget.titlebar.R;
 
 
 /**
