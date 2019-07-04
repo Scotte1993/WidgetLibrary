@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.junpu.widget.messageview;
 
 import android.content.Context;

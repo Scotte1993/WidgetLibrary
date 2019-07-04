@@ -33,14 +33,14 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:recyclerview-v7:$support_version"
 
-    implementation project(':lib.widget')
-    implementation project(':lib.widget.messageview')
-    implementation project(':lib.widget.titlebar')
-    implementation project(':lib.widget.adbarview')
-    implementation project(':lib.statistics')
-    implementation project(':lib.widget.floatviewgroup')
-    implementation project(':lib.widget.slide')
-    implementation project(':lib.widget.dialplate')
-    implementation project(':lib.widget.phonedial')
+    implementation project(':lib_widget')
+    implementation project(':lib_widget_messageview')
+    implementation project(':lib_widget_titlebar')
+    implementation project(':lib_widget_adbarview')
+    implementation project(':lib_statistics')
+    implementation project(':lib_widget_floatviewgroup')
+    implementation project(':lib_widget_slide')
+    implementation project(':lib_widget_dialplate')
+    implementation project(':lib_widget_phonedial')
     implementation project(':lib_widget_popupwindow')
 }
