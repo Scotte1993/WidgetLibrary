@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff000"
-    tools:context=".ui.PhoneDialActivity">
+    tools:context="com.junpu.widget.sample.ui.PhoneDialActivity">
 
-    <com.bftv.widget.phonedial.PhoneDialView
+    <com.junpu.widget.phonedial.PhoneDialView
         android:id="@+id/dialPlate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

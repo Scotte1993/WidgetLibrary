@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Lib.Widget.MessageView</string>
+    <string name="app_name">lib_widget_messageview</string>
     <string name="click_retry">重试</string>
 </resources>

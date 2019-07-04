@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.baofeng.widget.titlebar.R;
-
-
 /**
  * 统一使用的标题栏，目前使用方式为ActionBar的CustomView
  *
@@ -59,9 +56,9 @@ public class TitleBar extends FrameLayout implements OnClickListener {
         setLayoutParams(params);
 
         LayoutInflater.from(getContext()).inflate(R.layout.titlebar_layout, this);
-        mLeftText = (TextView) findViewById(R.id.Back);
-        mRightText = (TextView) findViewById(R.id.Next);
-        mTitleText = (TextView) findViewById(R.id.Title);
+        mLeftText = findViewById(R.id.Back);
+        mRightText = findViewById(R.id.Next);
+        mTitleText = findViewById(R.id.Title);
         mLeftText.setOnClickListener(this);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TitleBar, defStyle, 0);

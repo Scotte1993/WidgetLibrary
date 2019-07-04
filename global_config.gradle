@@ -13,10 +13,10 @@ ext {
     aar = [
             "debug"               : [name: 'debug-1.2.0', ext: 'aar'],
             "adapter-recyclerview": [name: 'adapter-recyclerview-1.1.9', ext: 'aar'],
-            "resources"           : [name: 'lib.resources-release', ext: 'aar'],
-            "utils"               : [name: 'lib.utils-release', ext: 'aar'],
-            "utils-imagepicker"   : [name: 'lib.utils.imagepicker-release', ext: 'aar'],
-            "utils-support"       : [name: 'lib.utils.support-release', ext: 'aar'],
+            "resources"           : [name: 'lib_resources-release', ext: 'aar'],
+            "utils"               : [name: 'lib_utils-release', ext: 'aar'],
+            "utils-imagepicker"   : [name: 'lib_utils_imagepicker-release', ext: 'aar'],
+            "utils-support"       : [name: 'lib_utils_support-release', ext: 'aar'],
     ]
 
     libraries = [
@@ -48,14 +48,6 @@ ext {
             "joker-tab"                      : 'com.abooc.joker:joker-tab:1.1.1(25.1.1)',
             "debug"                          : 'com.abooc.debug:debug-core:latest.integration',
             "emoji"                          : 'com.abooc.joker:emoji:1.6.4.04201912',
-
-            // baofeng
-            "utils"                          : 'com.baofeng.utils:utils:1.0.0',
-            "utils-dlog"                     : 'com.baofeng.utils:utils-dlog:1.0.0',
-            "utils-gson"                     : 'com.baofeng.utils:utils-gson:1.0.0',
-            "utils-fresco"                   : 'com.baofeng.utils:utils-fresco:1.0.0',
-            "utils-retrofit"                 : 'com.baofeng.utils:utils-retrofit:1.0.0',
-            "widget-indicator"               : 'com.baofeng.widget:widget-indicator:1.0.0',
 
             // android support
             "appcompat-v7"                   : "com.android.support:appcompat-v7:$support_version",

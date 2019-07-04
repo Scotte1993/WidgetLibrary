@@ -9,9 +9,6 @@ import android.view.WindowManager;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 
-import com.baofeng.widget.R;
-
-
 /**
  * 列表对话框
  */

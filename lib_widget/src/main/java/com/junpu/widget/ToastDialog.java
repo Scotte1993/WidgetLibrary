@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 
-import com.baofeng.widget.R;
-
 /**
  * 提示对话框，用于展示一段文字
  * @author Junpu

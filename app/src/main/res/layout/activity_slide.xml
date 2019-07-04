@@ -3,18 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.SlideActivity">
+    android:layout_height="match_parent">
 
     <!--<com.bftv.widget.slide.SlideView-->
-        <!--android:id="@+id/slideView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp" />-->
+    <!--android:id="@+id/slideView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp" />-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

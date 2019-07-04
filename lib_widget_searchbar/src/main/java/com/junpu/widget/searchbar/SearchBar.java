@@ -16,8 +16,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.baofeng.widget.searchbar.R;
-
 /**
  * @author Junpu
  * @time 2017/12/4 13:31

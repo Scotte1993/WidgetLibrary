@@ -13,8 +13,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.baofeng.utils.InputUtils;
-import com.baofeng.widget.R;
+import com.junpu.utils.InputUtils;
 
 /**
  * 编辑对话框

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.FloatViewActivity">
+    tools:context="com.junpu.widget.sample.ui.FloatViewActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,7 +12,7 @@
         android:layout_margin="50dp"
         android:background="#ff00ff">
 
-        <com.bftv.widget.floatview.FloatViewGroup
+        <com.junpu.widget.floatview.FloatViewGroup
             android:id="@+id/floatView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
                 android:background="#ff0000"
                 android:gravity="center"
                 android:text="遥控器" />
-        </com.bftv.widget.floatview.FloatViewGroup>
+        </com.junpu.widget.floatview.FloatViewGroup>
     </RelativeLayout>
 
 </RelativeLayout>

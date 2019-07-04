@@ -12,8 +12,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import com.baofeng.widget.AdBarView.R;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -11,8 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.baofeng.widget.messageview.R;
-
 /**
  * 负责呈现没有获取到数据时的提示 </br> 通常作为ListView、GridView等呈现网络数据的布局，在其获取数据失败时的提示页面； <li>
  * 方便loading和非loading状态的提示； <li>方便获取数据结果的提示，如获取数据为空，获取数据失败，网络错误等提示。 </br></br>

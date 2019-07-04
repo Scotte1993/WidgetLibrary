@@ -13,9 +13,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.baofeng.widget.R;
-
-
 /**
  * 自定义开关按钮，
  *

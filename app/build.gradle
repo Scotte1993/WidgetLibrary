@@ -9,7 +9,7 @@ def aar = rootProject.ext.aar
 android {
     compileSdkVersion cfg.compileSdkVersion
     defaultConfig {
-        applicationId "com.bftv.widget.sample"
+        applicationId "com.junpu.widget.sample"
         minSdkVersion cfg.minSdkVersion
         targetSdkVersion cfg.targetSdkVersion
         versionCode cfg.versionCode

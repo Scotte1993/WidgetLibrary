@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.baofeng.widget.indicator.R;
 import com.junpu.widget.indicator.utils.IndicatorUtils;
 
 import java.util.ArrayList;

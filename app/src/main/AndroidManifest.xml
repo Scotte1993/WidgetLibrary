@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bftv.widget.sample">
+    package="com.junpu.widget.sample">
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,6 @@
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -32,11 +31,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.FloatViewActivity" />
         <activity android:name=".ui.SlideActivity" />
-        <activity android:name=".ui.PhoneDialActivity" />
         <activity android:name=".ui.TVDialPlateActivity" />
-        <activity
-            android:name=".ui.PopupWindowActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name=".ui.PopupWindowActivity" />
+        <activity android:name=".ui.PhoneDialActivity" />
     </application>
 
 </manifest>

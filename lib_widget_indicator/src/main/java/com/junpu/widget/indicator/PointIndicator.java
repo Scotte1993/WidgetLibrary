@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import com.baofeng.widget.indicator.R;
 import com.junpu.widget.indicator.utils.IndicatorUtils;
 
 public class PointIndicator extends RadioGroup {

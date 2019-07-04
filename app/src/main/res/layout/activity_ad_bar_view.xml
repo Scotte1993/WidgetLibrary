@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.AdBarViewActivity">
+    tools:context="com.junpu.widget.sample.ui.AdBarViewActivity">
 
     <com.junpu.widget.AdBarView.AdView
         android:id="@+id/mv_bar1"
