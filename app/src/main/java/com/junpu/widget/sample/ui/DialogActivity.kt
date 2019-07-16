@@ -2,8 +2,8 @@ package com.junpu.widget.sample.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.junpu.widget.EditDialog
-import com.junpu.widget.EditDialog.OnSubmitListener
+import com.junpu.widget.dialog.EditDialog
+import com.junpu.widget.dialog.EditDialog.OnSubmitListener
 import com.junpu.widget.sample.R
 import com.junpu.widget.sample.utils.DialogHelper
 import kotlinx.android.synthetic.main.activity_dialog.*
@@ -29,7 +29,7 @@ class DialogActivity: AppCompatActivity() {
         }
         btnEdit.setOnClickListener {
             DialogHelper.showEditDialog(this, "备注", "", "填写备注", object : OnSubmitListener {
-                override fun onSubmit(dialog: EditDialog?, id: Int, message: String?) {
+                override fun onSubmit(dialog: com.junpu.widget.dialog.EditDialog?, id: Int, message: String?) {
                     println("message = ${message}")
                 }
             })

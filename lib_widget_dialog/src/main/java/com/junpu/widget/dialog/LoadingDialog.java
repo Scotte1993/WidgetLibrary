@@ -1,4 +1,4 @@
-package com.junpu.widget;
+package com.junpu.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;

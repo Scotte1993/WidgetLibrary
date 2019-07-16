@@ -1,4 +1,4 @@
-package com.junpu.widget;
+package com.junpu.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.text.InputFilter;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -21,7 +20,7 @@ import com.junpu.utils.InputUtils;
  * @author Junpu
  * @time 2018/9/13 14:33
  */
-public class EditDialog extends Dialog implements OnClickListener {
+public class EditDialog extends Dialog implements View.OnClickListener {
 
     private TextView mTextTitle;
     private EditText mEditText;

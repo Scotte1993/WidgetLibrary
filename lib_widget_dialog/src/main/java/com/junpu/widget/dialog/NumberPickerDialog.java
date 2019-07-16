@@ -1,4 +1,4 @@
-package com.junpu.widget;
+package com.junpu.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -39,7 +39,7 @@ public class NumberPickerDialog extends Dialog {
     }
 
     private void initUI() {
-        mNumberpicker = (NumberPicker) findViewById(R.id.numberpicker);
+        mNumberpicker = (NumberPicker) findViewById(R.id.numberPicker);
         // 关闭可编辑模式
         mNumberpicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         mNumberpicker.setOnValueChangedListener(new OnValueChangeListener() {

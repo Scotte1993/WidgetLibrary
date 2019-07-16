@@ -32,6 +32,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$support_version"
 
     implementation project(':lib_widget')
+    implementation project(':lib_widget_dialog')
     implementation project(':lib_widget_messageview')
     implementation project(':lib_widget_titlebar')
     implementation project(':lib_widget_adbarview')

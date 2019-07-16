@@ -77,7 +77,7 @@
             android:focusable="true"
             android:gravity="center"
             android:text="@string/dialog_save"
-            android:textColor="@color/widget_text_sel"
+            android:textColor="@color/dialog_text_sel"
             android:textSize="15.4sp" />
 
     </LinearLayout>

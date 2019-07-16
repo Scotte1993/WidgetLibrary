@@ -5,7 +5,7 @@
     android:background="@android:color/white">
 
     <NumberPicker
-        android:id="@+id/numberpicker"
+        android:id="@+id/numberPicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>

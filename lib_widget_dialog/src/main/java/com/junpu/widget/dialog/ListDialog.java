@@ -1,4 +1,4 @@
-package com.junpu.widget;
+package com.junpu.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -50,16 +50,16 @@ public class ListDialog extends Dialog {
         Window window = getWindow();
         window.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        window.setWindowAnimations(R.style.window_anim_bottom);
+        window.setWindowAnimations(R.style.dialog_anim_bottom);
 
         setLandScape(false);
         initUI();
     }
 
     private void initUI() {
-        mListView = (ListView) findViewById(android.R.id.list);
+        mListView = findViewById(android.R.id.list);
         mActionMenu = findViewById(R.id.actionMenu);
-        mButton1 = (TextView) findViewById(android.R.id.button1);
+        mButton1 = findViewById(android.R.id.button1);
         mButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,4 +1,4 @@
-package com.junpu.widget;
+package com.junpu.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -47,7 +47,7 @@ public class UserAgeDialog extends Dialog {
         Window window = getWindow();
         window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         window.setGravity(Gravity.BOTTOM);
-        window.setWindowAnimations(R.style.window_anim_bottom);
+        window.setWindowAnimations(R.style.dialog_anim_bottom);
 
         setCanceledOnTouchOutside(true);
     }

@@ -2,11 +2,11 @@ package com.junpu.widget.sample.utils
 
 import android.content.Context
 import android.content.DialogInterface
-import com.junpu.widget.EditDialog
-import com.junpu.widget.EditDialog.OnSubmitListener
-import com.junpu.widget.ListDialog
-import com.junpu.widget.LoadingDialog
-import com.junpu.widget.ToastDialog
+import com.junpu.widget.dialog.EditDialog
+import com.junpu.widget.dialog.EditDialog.OnSubmitListener
+import com.junpu.widget.dialog.ListDialog
+import com.junpu.widget.dialog.LoadingDialog
+import com.junpu.widget.dialog.ToastDialog
 
 /**
  * 快速生成对话框
@@ -22,8 +22,8 @@ object DialogHelper {
      * @param positiveListener
      * @return
      */
-    fun showToastDialog(context: Context, message: String, positiveListener: DialogInterface.OnClickListener? = null): ToastDialog {
-        return ToastDialog.Builder(context)
+    fun showToastDialog(context: Context, message: String, positiveListener: DialogInterface.OnClickListener? = null): com.junpu.widget.dialog.ToastDialog {
+        return com.junpu.widget.dialog.ToastDialog.Builder(context)
                 .setMessage(message)
                 .setPositiveButton(positiveListener)
                 .show()
@@ -36,8 +36,8 @@ object DialogHelper {
      * @param isLand 是否为横屏
      */
     @JvmOverloads
-    fun showListDialog(context: Context, list: Array<String>, listener: DialogInterface.OnClickListener? = null, isLand: Boolean = false): ListDialog {
-        return ListDialog.Builder(context)
+    fun showListDialog(context: Context, list: Array<String>, listener: DialogInterface.OnClickListener? = null, isLand: Boolean = false): com.junpu.widget.dialog.ListDialog {
+        return com.junpu.widget.dialog.ListDialog.Builder(context)
                 .setList(list)
                 .setOnItemClickListener(listener)
                 .setIsLandScape(isLand)
@@ -50,8 +50,8 @@ object DialogHelper {
      * @param msg
      * @return
      */
-    fun showLoadingDialog(context: Context, msg: String): LoadingDialog {
-        return LoadingDialog.Builder(context)
+    fun showLoadingDialog(context: Context, msg: String): com.junpu.widget.dialog.LoadingDialog {
+        return com.junpu.widget.dialog.LoadingDialog.Builder(context)
                 .setMessage(msg)
                 .setCancelable(false)
                 .setCanceledOnTouchOutside(false)
@@ -65,8 +65,8 @@ object DialogHelper {
      * @param positiveListener
      * @return
      */
-    fun showEditDialog(context: Context, title: String?, message: String?, hint: String?, positiveListener: OnSubmitListener? = null): EditDialog {
-        return EditDialog.Builder(context)
+    fun showEditDialog(context: Context, title: String?, message: String?, hint: String?, positiveListener: OnSubmitListener? = null): com.junpu.widget.dialog.EditDialog {
+        return com.junpu.widget.dialog.EditDialog.Builder(context)
                 .setTitle(title)
                 .setMessage(message)
                 .setHint(hint)
@@ -76,8 +76,8 @@ object DialogHelper {
                 .show()
     }
 
-    fun showEditDialog(context: Context, title: String?, message: String?, positiveListener: OnSubmitListener? = null): EditDialog {
-        return EditDialog.Builder(context)
+    fun showEditDialog(context: Context, title: String?, message: String?, positiveListener: OnSubmitListener? = null): com.junpu.widget.dialog.EditDialog {
+        return com.junpu.widget.dialog.EditDialog.Builder(context)
                 .setTitle(title)
                 .setMessage(message)
                 .setPositiveButton(positiveListener)
