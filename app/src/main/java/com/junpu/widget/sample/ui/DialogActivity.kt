@@ -12,7 +12,7 @@ import com.junpu.widget.dialog.RecyclerDialog
 import com.junpu.widget.sample.R
 import com.junpu.widget.sample.utils.DialogHelper
 import kotlinx.android.synthetic.main.activity_dialog.*
-import kotlinx.android.synthetic.main.dialog_list_item.view.*
+import kotlinx.android.synthetic.main.dialog_recycler_item.view.*
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.toast
 import java.util.*
@@ -83,7 +83,7 @@ class MyAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): MyViewHolder {
         val inflater = LayoutInflater.from(viewGroup.context)
-        val view = inflater.inflate(R.layout.dialog_list_item, viewGroup, false)
+        val view = inflater.inflate(R.layout.dialog_recycler_item, viewGroup, false)
         return MyViewHolder(view, onItemClickListener)
     }
 

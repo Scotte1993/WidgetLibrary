@@ -12,8 +12,7 @@ import android.view.Window;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 
-import com.junpu.utils.ParseUtils;
-import com.junpu.utils.WindowUtils;
+import com.junpu.widget.dialog.utils.DialogUtils;
 
 /**
  * 用户选择生日dialog
@@ -36,7 +35,7 @@ public class UserAgeDialog extends Dialog {
     private void init(Context context) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        int width = WindowUtils.getScreenWidth(context);
+        int width = DialogUtils.getScreenWidth(context);
         LayoutParams lp = new LayoutParams(width, LayoutParams.WRAP_CONTENT);
 
         ViewGroup view = (ViewGroup) LayoutInflater.from(getContext()).inflate(R.layout.dialog_user_age, null);
@@ -64,9 +63,9 @@ public class UserAgeDialog extends Dialog {
         int day = 1;
         if (!TextUtils.isEmpty(birthday)) {
             String[] birth = birthday.split("-");
-            year = ParseUtils.parseIntSafely(birth[0]);
-            month = ParseUtils.parseIntSafely(birth[1]);
-            day = ParseUtils.parseIntSafely(birth[2]);
+            year = DialogUtils.parseIntSafely(birth[0]);
+            month = DialogUtils.parseIntSafely(birth[1]);
+            day = DialogUtils.parseIntSafely(birth[2]);
         }
         initDate(year, month, day);
     }

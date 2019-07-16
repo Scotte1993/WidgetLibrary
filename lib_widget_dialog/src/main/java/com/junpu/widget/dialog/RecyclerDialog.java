@@ -17,9 +17,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.junpu.utils.ToolUtils;
-import com.junpu.utils.WindowUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -62,7 +59,6 @@ public class RecyclerDialog extends Dialog {
             window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 //            window.setWindowAnimations(R.style.dialog_anim_bottom);
         }
-        setLandScape(false);
         initUI();
     }
 
@@ -77,24 +73,6 @@ public class RecyclerDialog extends Dialog {
                 cancel();
             }
         });
-    }
-
-    /**
-     * 设置横竖屏模式
-     */
-    public void setLandScape(boolean isLand) {
-        Window window = getWindow();
-        if (window != null) {
-            WindowManager.LayoutParams lp = window.getAttributes();
-            window.getDecorView().setPadding(0, 0, 0, 0);
-            if (isLand) {
-                lp.width = WindowUtils.getScreenHeight(getContext()) - ToolUtils.dp2px(getContext(), 20);
-            } else {
-                lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-            }
-            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-            window.setAttributes(lp);
-        }
     }
 
     /**
@@ -174,7 +152,7 @@ public class RecyclerDialog extends Dialog {
         public DefaultRecyclerDialogViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
             LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
             View view = inflater.inflate(R.layout.dialog_list_item, viewGroup, false);
-            view.setBackgroundResource(R.drawable.default_item_selector);
+            view.setBackgroundResource(R.drawable.dialog_item_selector);
             return new DefaultRecyclerDialogViewHolder(view, mOnItemClickListener);
         }
 
@@ -238,7 +216,6 @@ public class RecyclerDialog extends Dialog {
         private String mMessage;
         private int mWidth = -3;
         private int mHeight = -3;
-        private Boolean isLandScape = false;
         private RecyclerView.Adapter mAdapter;
         private RecyclerView.LayoutManager mLayoutManager;
         private OnItemClickListener mOnItemClickListener;
@@ -273,11 +250,6 @@ public class RecyclerDialog extends Dialog {
             return this;
         }
 
-        public Builder setLandScape(Boolean isLandScape) {
-            this.isLandScape = isLandScape;
-            return this;
-        }
-
         public Builder setAdapter(RecyclerView.Adapter adapter) {
             this.mAdapter = adapter;
             return this;
@@ -307,7 +279,6 @@ public class RecyclerDialog extends Dialog {
             RecyclerDialog dialog = new RecyclerDialog(mContext);
             dialog.setTitle(mTitle);
             dialog.setMessage(mMessage);
-            dialog.setLandScape(isLandScape);
             if (mWidth != -3) dialog.setWidth(mWidth);
             if (mHeight != -3) dialog.setHeight(mHeight);
             if (mAdapter != null) {

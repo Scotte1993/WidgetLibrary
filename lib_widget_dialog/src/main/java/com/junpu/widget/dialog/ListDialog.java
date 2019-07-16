@@ -17,9 +17,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.junpu.utils.ToolUtils;
-import com.junpu.utils.WindowUtils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -73,7 +70,7 @@ public class ListDialog extends Dialog {
         WindowManager.LayoutParams lp = window.getAttributes();
         window.getDecorView().setPadding(0, 0, 0, 0);
         if (isLand) {
-            lp.width = WindowUtils.getScreenHeight(getContext()) - ToolUtils.dp2px(getContext(), 20);
+            lp.width = DialogUtils.getScreenHeight(getContext()) - DialogUtils.dp2px(getContext(), 20);
         } else {
             lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         }

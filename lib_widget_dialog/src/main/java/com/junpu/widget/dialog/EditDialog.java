@@ -12,7 +12,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.junpu.utils.InputUtils;
+import com.junpu.widget.dialog.utils.DialogUtils;
 
 /**
  * 编辑对话框
@@ -79,7 +79,7 @@ public class EditDialog extends Dialog implements View.OnClickListener {
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.cancel) {
-            InputUtils.hideInputMethod(getContext(), view);
+            DialogUtils.hideInputMethod(getContext(), view);
             if (mNegativeListener != null) {
                 mNegativeListener.onClick(this, id);
             }
