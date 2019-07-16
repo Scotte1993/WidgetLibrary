@@ -83,8 +83,6 @@ public class ListDialog extends Dialog {
 
     /**
      * 设置数据
-     *
-     * @param list
      */
     public void setList(String[] list) {
         mListView.setAdapter(addAdapter(list));

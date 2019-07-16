@@ -34,7 +34,7 @@
 ////            }
 ////        })
 ////        val view=ImageView(this)
-////        view.setImageResource(R.mipmap.ic_launcher)
+////        view.setImageResource(R.mipmap-xxhdpi.ic_launcher)
 ////        slideView.addContainerView(view)
 //
 //        recyclerView.adapter = MyAdapter(this)
