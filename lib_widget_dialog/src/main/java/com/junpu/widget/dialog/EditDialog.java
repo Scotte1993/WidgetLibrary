@@ -12,8 +12,6 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.junpu.widget.dialog.utils.DialogUtils;
-
 /**
  * 编辑对话框
  *

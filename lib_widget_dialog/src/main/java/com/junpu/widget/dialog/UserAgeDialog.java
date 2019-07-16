@@ -12,8 +12,6 @@ import android.view.Window;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 
-import com.junpu.widget.dialog.utils.DialogUtils;
-
 /**
  * 用户选择生日dialog
  */
