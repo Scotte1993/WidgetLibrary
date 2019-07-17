@@ -23,8 +23,8 @@
             android:maxLines="1"
             android:textColor="@color/dialog_text_primary"
             android:textSize="18sp"
-            android:visibility="invisible"
-            tools:text="Title" />
+            android:visibility="visible"
+            tools:text="选择您要生成每日推送信息的学生姓名" />
 
         <ImageView
             android:id="@+id/imageCancel"
@@ -45,7 +45,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:textColor="@color/dialog_text_secondary"
+        android:textSize="15sp"
         android:visibility="gone"
-        tools:text="自动推送的条件：1）10:00前完成至少一份错题整理，保证错题整理有内容；2）今天没有推送过；" />
+        tools:text="工作日每晚10点，点将自动推送学生的每日报告。请在此时间前，完成所有学生的学管师评语。\n已完成评语并推送的学员不会重复推送。" />
 
 </LinearLayout>

@@ -58,14 +58,14 @@ class DialogActivity : AppCompatActivity() {
         btnRecyclerDialog.setOnClickListener {
             if (dialog == null) {
                 dialog = RecyclerDialog.Builder(this)
-//                    .setTitle("Title")
+                        .setTitle("选择您要生成每日推送信息的学生姓名")
+                        .setMessage("工作日每晚10点，点将自动推送学生的每日报告。请在此时间前，完成所有学生的学管师评语。\n已完成评语并推送的学员不会重复推送。")
                         .setWidth(dip(350))
 //                    .setHeight(dip(500))
                         .setLayoutManager(layoutManager)
                         .setAdapter(adapter)
-                        .setMessage("Message")
                         .setOnItemClickListener { _, _, position -> toast("$position") }
-                        .setList(list)
+//                        .setList(arrayOf("1", "2", "3", "4", "5"))
                         .show()
             } else {
                 dialog?.setList(list)
