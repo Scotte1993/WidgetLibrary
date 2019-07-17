@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -29,10 +30,17 @@ import java.util.List;
  */
 public class RecyclerDialog extends Dialog {
 
+    public static final int STATUS_LOADING = 0;
+    public static final int STATUS_SUCCESS = 1;
+    public static final int STATUS_ERROR = 2;
+    public static final String DEFAULT_ERROR = "数据错误";
+
     private TextView mTextTitle;
     private TextView mTextMessage;
     private ImageView mImageCancel;
     private RecyclerView mRecyclerView;
+    private ProgressBar mProgressBar;
+    private TextView mTextErrorMessage;
     private DefaultRecyclerDialogAdapter mAdapter;
     private OnItemClickListener mOnItemClickListener;
 
@@ -66,6 +74,8 @@ public class RecyclerDialog extends Dialog {
         mTextTitle = findViewById(R.id.textTitle);
         mTextMessage = findViewById(R.id.textMessage);
         mRecyclerView = findViewById(R.id.recyclerView);
+        mProgressBar = findViewById(R.id.progress);
+        mTextErrorMessage = findViewById(R.id.errorMessage);
         mImageCancel = findViewById(R.id.imageCancel);
         mImageCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +83,7 @@ public class RecyclerDialog extends Dialog {
                 cancel();
             }
         });
+        loading();
     }
 
     /**
@@ -126,6 +137,7 @@ public class RecyclerDialog extends Dialog {
     public void setList(List<String> list) {
         if (mAdapter != null) {
             mAdapter.update(list);
+            success();
         }
     }
 
@@ -137,6 +149,55 @@ public class RecyclerDialog extends Dialog {
     public void setMessage(String message) {
         mTextMessage.setText(message);
         mTextMessage.setVisibility(TextUtils.isEmpty(message) ? View.GONE : View.VISIBLE);
+    }
+
+    /**
+     * loading状态
+     */
+    public void loading() {
+        mProgressBar.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.GONE);
+        mTextErrorMessage.setVisibility(View.GONE);
+    }
+
+    /**
+     * 成功状态
+     */
+    public void success() {
+        mProgressBar.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+        mTextErrorMessage.setVisibility(View.GONE);
+    }
+
+    /**
+     * 错误状态
+     */
+    public void error(String errorMsg) {
+        mProgressBar.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.GONE);
+        mTextErrorMessage.setVisibility(View.VISIBLE);
+        mTextErrorMessage.setText(errorMsg);
+    }
+
+    /**
+     * 设置状态 STATUS_LOADING, STATUS_SUCCESS, STATUS_ERROR
+     */
+    public void setStatus(int status) {
+        setStatus(status, DEFAULT_ERROR);
+    }
+
+    public void setStatus(int status, String errorMsg) {
+        switch (status) {
+            case STATUS_LOADING:
+                loading();
+                break;
+            case STATUS_SUCCESS:
+                success();
+                break;
+            case STATUS_ERROR:
+                error(errorMsg);
+                break;
+        }
     }
 
     /**

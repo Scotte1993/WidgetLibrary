@@ -1,6 +1,7 @@
 package com.junpu.widget.sample.ui
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -44,7 +45,6 @@ class DialogActivity : AppCompatActivity() {
             })
         }
 
-
         val list = arrayListOf<String>()
         for (i in 0..15) {
             list.add("item $i")
@@ -52,7 +52,6 @@ class DialogActivity : AppCompatActivity() {
 
         val layoutManager = GridLayoutManager(this, 3)
         val adapter = MyAdapter()
-        adapter.update(list)
         adapter.setOnItemClickListener(RecyclerDialog.OnItemClickListener { _, _, position -> toast("click item $position") })
         var dialog: RecyclerDialog? = null
         btnRecyclerDialog.setOnClickListener {
@@ -66,11 +65,16 @@ class DialogActivity : AppCompatActivity() {
                         .setAdapter(adapter)
                         .setOnItemClickListener { _, _, position -> toast("$position") }
 //                        .setList(arrayOf("1", "2", "3", "4", "5"))
-                        .show()
-            } else {
-                dialog?.setList(list)
-                dialog?.show()
+                        .create()
             }
+            dialog?.loading()
+//            dialog?.setList(list)
+            Handler().postDelayed({
+                println("list = $list")
+                adapter.update(list)
+                dialog?.success()
+            }, 3000)
+            dialog?.show()
         }
     }
 
@@ -103,7 +107,7 @@ class MyAdapter : RecyclerView.Adapter<MyViewHolder>() {
     internal fun update(list: MutableList<String>?) {
         if (list == null) return
         data.clear()
-        data = list
+        data.addAll(list)
         notifyDataSetChanged()
     }
 }
