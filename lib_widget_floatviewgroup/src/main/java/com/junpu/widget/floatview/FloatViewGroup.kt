@@ -3,10 +3,12 @@ package com.junpu.widget.floatview
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.widget.FrameLayout
+import kotlin.math.abs
 
 /**
  * 浮动ViewGroup 可以拖拽，左右停靠
@@ -51,8 +53,12 @@ class FloatViewGroup : FrameLayout {
 
     private fun init() {
         this.post {
-            parentWidth = (parent as ViewGroup).width.toFloat()
-            parentHeight = (parent as ViewGroup).height.toFloat()
+            val marginStart = (layoutParams as? MarginLayoutParams)?.marginStart ?: 0
+            val marginEnd = (layoutParams as? MarginLayoutParams)?.marginEnd ?: 0
+            val marginTop = (layoutParams as? MarginLayoutParams)?.topMargin ?: 0
+            val marginBottom = (layoutParams as? MarginLayoutParams)?.bottomMargin ?: 0
+            parentWidth = (parent as ViewGroup).width.toFloat() - marginStart - marginEnd
+            parentHeight = (parent as ViewGroup).height.toFloat() - marginTop - marginBottom
         }
 
         minMovePx = dp2px(context, MIN_MOVE)
@@ -70,14 +76,12 @@ class FloatViewGroup : FrameLayout {
                 intercept = false
             }
             MotionEvent.ACTION_MOVE -> {
-                if (Math.abs(event.rawY - downY) > minMovePx && Math.abs(event.rawX - downX) > minMovePx) {
+                if (abs(event.rawY - downY) > minMovePx && abs(event.rawX - downX) > minMovePx) {
                     isMove = true
                     intercept = true
                 }
             }
-            else -> {
-                intercept = false
-            }
+            else -> intercept = false
         }
         return intercept
     }
@@ -88,7 +92,7 @@ class FloatViewGroup : FrameLayout {
 
             }
             MotionEvent.ACTION_MOVE -> {
-                if (Math.abs(event.rawY - downY) > minMovePx && Math.abs(event.rawX - downX) > minMovePx) {
+                if (abs(event.rawY - downY) > minMovePx && abs(event.rawX - downX) > minMovePx) {
                     isMove = true
                 }
                 translationX = downTranslationX + event.rawX - downX
@@ -120,4 +124,12 @@ class FloatViewGroup : FrameLayout {
         super.onDetachedFromWindow()
         animator?.cancel()
     }
+
+    /**
+     * 返回dp值
+     */
+    private fun dp2px(context: Context, dp: Float): Int {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.resources.displayMetrics).toInt()
+    }
+
 }
