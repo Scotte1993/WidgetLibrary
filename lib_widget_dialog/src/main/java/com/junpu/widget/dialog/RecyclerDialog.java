@@ -110,6 +110,10 @@ public class RecyclerDialog extends Dialog {
         }
     }
 
+    public RecyclerView getRecyclerView() {
+        return mRecyclerView;
+    }
+
     /**
      * 初始化默认RecyclerView Adapter
      */
@@ -126,6 +130,13 @@ public class RecyclerDialog extends Dialog {
     public void setCustomAdapter(RecyclerView.LayoutManager layoutManager, RecyclerView.Adapter adapter) {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(adapter);
+    }
+
+    /**
+     * 设置ItemDecoration
+     */
+    public void addItemDecoration(RecyclerView.ItemDecoration decoration) {
+        mRecyclerView.addItemDecoration(decoration);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -285,6 +296,7 @@ public class RecyclerDialog extends Dialog {
         private int mHeight = -3;
         private RecyclerView.Adapter mAdapter;
         private RecyclerView.LayoutManager mLayoutManager;
+        private RecyclerView.ItemDecoration mItemDecoration;
         private OnItemClickListener mOnItemClickListener;
         private List<String> mList;
 
@@ -332,6 +344,11 @@ public class RecyclerDialog extends Dialog {
             return this;
         }
 
+        public Builder setItemDecoration(RecyclerView.ItemDecoration decoration) {
+            this.mItemDecoration = decoration;
+            return this;
+        }
+
         public Builder setOnItemClickListener(OnItemClickListener listener) {
             this.mOnItemClickListener = listener;
             return this;
@@ -362,6 +379,7 @@ public class RecyclerDialog extends Dialog {
             } else {
                 dialog.initDefaultAdapter();
             }
+            dialog.addItemDecoration(mItemDecoration);
             dialog.setOnItemClickListener(mOnItemClickListener);
             dialog.setList(mList);
             return dialog;

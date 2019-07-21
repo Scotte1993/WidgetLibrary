@@ -58,7 +58,7 @@ class DialogActivity : AppCompatActivity() {
                 dialog = RecyclerDialog.Builder(this)
                         .setTitle("添加每日推送")
                         .setSubTitle("选择您准备要生成每日推送信息的学生姓名")
-                        .setMessage("工作日每晚10点，将自动推送所有学生的每日报告。请在此时间前，完成所有学生的学管师评语。\n\n已完成评语并推送学员的，不会重复推送。。")
+                        .setMessage("工作日每晚10点，将自动推送所有学生的每日报告。请在此时间前，完成所有学生的学管师评语。\n\n已完成评语并推送学员的，不会重复推送。")
 //                        .setWidth(dip(350))
 //                    .setHeight(dip(500))
                         .setLayoutManager(layoutManager)
