@@ -3,7 +3,6 @@ package com.junpu.widget.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -36,8 +34,8 @@ public class RecyclerDialog extends Dialog {
     public static final String DEFAULT_ERROR = "数据错误";
 
     private TextView mTextTitle;
+    private TextView mTextSubTitle;
     private TextView mTextMessage;
-    private ImageView mImageCancel;
     private RecyclerView mRecyclerView;
     private ProgressBar mProgressBar;
     private TextView mTextErrorMessage;
@@ -45,7 +43,7 @@ public class RecyclerDialog extends Dialog {
     private OnItemClickListener mOnItemClickListener;
 
     public RecyclerDialog(Context context) {
-        this(context, 0);
+        this(context, R.style.Theme_Dialog_Recycler);
     }
 
     public RecyclerDialog(Context context, int themeResId) {
@@ -59,30 +57,32 @@ public class RecyclerDialog extends Dialog {
     }
 
     private void init() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_recycler_view);
         Window window = getWindow();
         if (window != null) {
-            window.setGravity(Gravity.CENTER);
-            window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//            window.setWindowAnimations(R.style.dialog_anim_bottom);
+            window.setGravity(Gravity.BOTTOM);
+            WindowManager.LayoutParams params = window.getAttributes();
+            params.width = WindowManager.LayoutParams.MATCH_PARENT;
+            params.height = WindowManager.LayoutParams.MATCH_PARENT;
+            window.setAttributes(params);
         }
+
         initUI();
     }
 
     private void initUI() {
-        mTextTitle = findViewById(R.id.textTitle);
-        mTextMessage = findViewById(R.id.textMessage);
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mProgressBar = findViewById(R.id.progress);
-        mTextErrorMessage = findViewById(R.id.errorMessage);
-        mImageCancel = findViewById(R.id.imageCancel);
-        mImageCancel.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.cancelView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cancel();
             }
         });
+        mTextTitle = findViewById(R.id.textTitle);
+        mTextSubTitle = findViewById(R.id.textSubTitle);
+        mTextMessage = findViewById(R.id.textMessage);
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mProgressBar = findViewById(R.id.progress);
+        mTextErrorMessage = findViewById(R.id.errorMessage);
         loading();
     }
 
@@ -143,7 +143,12 @@ public class RecyclerDialog extends Dialog {
 
     public void setTitle(String title) {
         mTextTitle.setText(title);
-        mTextTitle.setVisibility(TextUtils.isEmpty(title) ? View.INVISIBLE : View.VISIBLE);
+        mTextTitle.setVisibility(TextUtils.isEmpty(title) ? View.GONE : View.VISIBLE);
+    }
+
+    public void setSubTitle(String subTitle) {
+        mTextSubTitle.setText(subTitle);
+        mTextSubTitle.setVisibility(TextUtils.isEmpty(subTitle) ? View.GONE : View.VISIBLE);
     }
 
     public void setMessage(String message) {
@@ -274,6 +279,7 @@ public class RecyclerDialog extends Dialog {
     public static class Builder {
         private Context mContext;
         private String mTitle;
+        private String mSubTitle;
         private String mMessage;
         private int mWidth = -3;
         private int mHeight = -3;
@@ -288,6 +294,11 @@ public class RecyclerDialog extends Dialog {
 
         public Builder setTitle(String title) {
             this.mTitle = title;
+            return this;
+        }
+
+        public Builder setSubTitle(String subTitle) {
+            this.mSubTitle = subTitle;
             return this;
         }
 
@@ -339,6 +350,7 @@ public class RecyclerDialog extends Dialog {
         public RecyclerDialog create() {
             RecyclerDialog dialog = new RecyclerDialog(mContext);
             dialog.setTitle(mTitle);
+            dialog.setSubTitle(mSubTitle);
             dialog.setMessage(mMessage);
             if (mWidth != -3) dialog.setWidth(mWidth);
             if (mHeight != -3) dialog.setHeight(mHeight);

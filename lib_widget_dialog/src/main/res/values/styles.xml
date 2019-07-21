@@ -34,4 +34,10 @@
         <item name="android:windowEnterAnimation">@anim/dialog_enter_top</item>
         <item name="android:windowExitAnimation">@anim/dialog_exit_top</item>
     </style>
+
+    <!-- 上进上出动画 -->
+    <style name="dialog_anim_fade" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_fade_out</item>
+    </style>
 </resources>

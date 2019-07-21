@@ -10,4 +10,6 @@
 
     <color name="dialog_item_press">#30666666</color>
     <color name="dialog_item_normal">#00000000</color>
+
+    <color name="dialog_dim_bg">#6b347ffc</color>
 </resources>

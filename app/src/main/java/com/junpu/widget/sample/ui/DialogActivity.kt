@@ -14,7 +14,6 @@ import com.junpu.widget.sample.R
 import com.junpu.widget.sample.utils.DialogHelper
 import kotlinx.android.synthetic.main.activity_dialog.*
 import kotlinx.android.synthetic.main.dialog_recycler_item.view.*
-import org.jetbrains.anko.dip
 import org.jetbrains.anko.toast
 import java.util.*
 
@@ -50,16 +49,17 @@ class DialogActivity : AppCompatActivity() {
             list.add("item $i")
         }
 
-        val layoutManager = GridLayoutManager(this, 3)
+        val layoutManager = GridLayoutManager(this, 4)
         val adapter = MyAdapter()
         adapter.setOnItemClickListener(RecyclerDialog.OnItemClickListener { _, _, position -> toast("click item $position") })
         var dialog: RecyclerDialog? = null
         btnRecyclerDialog.setOnClickListener {
             if (dialog == null) {
                 dialog = RecyclerDialog.Builder(this)
-                        .setTitle("选择您要生成每日推送信息的学生姓名")
-                        .setMessage("工作日每晚10点，点将自动推送学生的每日报告。请在此时间前，完成所有学生的学管师评语。\n已完成评语并推送的学员不会重复推送。")
-                        .setWidth(dip(350))
+                        .setTitle("添加每日推送")
+                        .setSubTitle("选择您准备要生成每日推送信息的学生姓名")
+                        .setMessage("工作日每晚10点，将自动推送所有学生的每日报告。请在此时间前，完成所有学生的学管师评语。\n\n已完成评语并推送学员的，不会重复推送。。")
+//                        .setWidth(dip(350))
 //                    .setHeight(dip(500))
                         .setLayoutManager(layoutManager)
                         .setAdapter(adapter)
