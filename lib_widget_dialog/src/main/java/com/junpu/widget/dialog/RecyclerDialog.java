@@ -344,7 +344,7 @@ public class RecyclerDialog extends Dialog {
             return this;
         }
 
-        public Builder setItemDecoration(RecyclerView.ItemDecoration decoration) {
+        public Builder addItemDecoration(RecyclerView.ItemDecoration decoration) {
             this.mItemDecoration = decoration;
             return this;
         }
@@ -379,7 +379,9 @@ public class RecyclerDialog extends Dialog {
             } else {
                 dialog.initDefaultAdapter();
             }
-            dialog.addItemDecoration(mItemDecoration);
+            if (mItemDecoration != null) {
+                dialog.addItemDecoration(mItemDecoration);
+            }
             dialog.setOnItemClickListener(mOnItemClickListener);
             dialog.setList(mList);
             return dialog;
