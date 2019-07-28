@@ -1,20 +1,17 @@
 package com.junpu.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 
 /**
  * 提示对话框，用于展示一段文字
+ *
  * @author Junpu
  * @time 2017/2/24 13:37
  */
-public class ToastDialog extends Dialog {
+public class ToastDialog extends BaseDialog implements View.OnClickListener {
 
     private TextView mMessageText;
     private View mCutline;
@@ -26,55 +23,48 @@ public class ToastDialog extends Dialog {
     private OnClickListener mPositiveListener;
 
     public ToastDialog(Context context) {
-        this(context, android.R.style.Theme_Holo_Dialog_NoActionBar);
+        super(context);
     }
 
     public ToastDialog(Context context, int themeResId) {
         super(context, themeResId);
-        init();
     }
 
-    protected ToastDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+    public ToastDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
-        init();
     }
 
-    private void init() {
-        setContentView(R.layout.dialog_toast);
+    @Override
+    protected int layout() {
+        return R.layout.dialog_toast;
+    }
+
+    @Override
+    protected void initView() {
         setCanceledOnTouchOutside(false);
-
-        final Window window = getWindow();
-        window.setGravity(Gravity.CENTER);
-        window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-        initUI();
+        mMessageText = findViewById(R.id.textMessage);
+        mCutline = findViewById(R.id.line);
+        mNegativeButton = findViewById(R.id.negative);
+        mNegativeButton.setOnClickListener(this);
+        mPositiveButton = findViewById(R.id.positive);
+        mPositiveButton.setOnClickListener(this);
     }
 
-    private void initUI() {
-        mMessageText = (TextView) findViewById(R.id.MessageText);
-        mCutline = findViewById(R.id.cutline);
-        mNegativeButton = (TextView) findViewById(R.id.negative);
-        mNegativeButton.setOnClickListener(mOnClickListener);
-        mPositiveButton = (TextView) findViewById(R.id.positive);
-        mPositiveButton.setOnClickListener(mOnClickListener);
-    }
-
-    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int i = v.getId();
-            if (i == R.id.negative) {
-                if (mNegativeListener != null) {
-                    mNegativeListener.onClick(ToastDialog.this, v.getId());
-                }
-            } else if (i == R.id.positive) {
-                if (mPositiveListener != null) {
-                    mPositiveListener.onClick(ToastDialog.this, v.getId());
-                }
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.negative) {
+            if (mNegativeListener != null) {
+                mNegativeListener.onClick(this, v.getId());
             }
-            cancel();
+        } else if (id == R.id.positive) {
+            if (mPositiveListener != null) {
+                mPositiveListener.onClick(this, v.getId());
+            }
         }
-    };
+        cancel();
+    }
+
 
     public void setMessage(int resId) {
         mMessageText.setText(resId);
@@ -86,6 +76,7 @@ public class ToastDialog extends Dialog {
 
     /**
      * 设置取消按钮文字
+     *
      * @param text
      */
     public void setNegativeButton(String text) {
@@ -94,6 +85,7 @@ public class ToastDialog extends Dialog {
 
     /**
      * 设置确定按钮文字
+     *
      * @param text
      */
     public void setPositiveButton(String text) {
@@ -131,7 +123,6 @@ public class ToastDialog extends Dialog {
         mPositiveButton.setText(text);
         setPositiveButton(listener);
     }
-
 
     public static class Builder {
         private Context mContext;

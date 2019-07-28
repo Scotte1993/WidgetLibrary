@@ -49,7 +49,7 @@ object DialogHelper {
      * @param msg
      * @return
      */
-    fun showLoadingDialog(context: Context, msg: String): LoadingDialog {
+    fun showLoadingDialog(context: Context, msg: String? = null): LoadingDialog {
         return LoadingDialog.Builder(context)
                 .setMessage(msg)
                 .setCancelable(false)

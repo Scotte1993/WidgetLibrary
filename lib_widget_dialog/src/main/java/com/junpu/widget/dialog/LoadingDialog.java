@@ -1,43 +1,46 @@
 package com.junpu.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 /**
- * loading dialog
+ * Loading dialog.
+ *
+ * @author junpu
+ * @date 2019-07-28
  */
-public class LoadingDialog extends Dialog {
+public class LoadingDialog extends BaseDialog {
 
     private TextView mMessageView;
 
     public LoadingDialog(Context context) {
-        this(context, android.R.style.Theme_Holo_Dialog_NoActionBar);
+        super(context);
     }
 
     public LoadingDialog(Context context, int themeResId) {
         super(context, themeResId);
-        init();
     }
 
-    protected LoadingDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+    public LoadingDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
-        init();
     }
 
-    protected void init() {
-        setContentView(R.layout.dialog_loading);
-        mMessageView = (TextView) findViewById(R.id.notice_content);
-        mMessageView.setText("加载中...");
-        Window window = getWindow();
-        window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+    @Override
+    protected int layout() {
+        return R.layout.dialog_loading;
+    }
 
-        WindowManager.LayoutParams lp = window.getAttributes();
-        lp.dimAmount = 0;
-        window.setAttributes(lp);
+    @Override
+    protected void initWindow(Window window, WindowManager.LayoutParams params) {
+//        params.dimAmount = 0;
+    }
+
+    @Override
+    protected void initView() {
+        mMessageView = findViewById(R.id.textMessage);
     }
 
     public void setMessage(String msg) {
@@ -81,7 +84,7 @@ public class LoadingDialog extends Dialog {
             LoadingDialog dialog = new LoadingDialog(mContext);
             dialog.setCancelable(mCancelable);
             dialog.setCanceledOnTouchOutside(mCancelOnTouchOutside);
-            dialog.setMessage(mMessage);
+            if (!TextUtils.isEmpty(mMessage)) dialog.setMessage(mMessage);
             return dialog;
         }
 

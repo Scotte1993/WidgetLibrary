@@ -8,7 +8,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.junpu.widget.dialog.AgeDialog
 import com.junpu.widget.dialog.EditDialog.OnSubmitListener
+import com.junpu.widget.dialog.NumberPickerDialog
 import com.junpu.widget.dialog.RecyclerDialog
 import com.junpu.widget.sample.R
 import com.junpu.widget.sample.utils.DialogHelper
@@ -43,6 +45,23 @@ class DialogActivity : AppCompatActivity() {
                 }
             })
         }
+        btnLoading?.setOnClickListener {
+            val dialog = DialogHelper.showLoadingDialog(this)
+            dialog.setCancelable(true)
+        }
+        btnToast?.setOnClickListener {
+            DialogHelper.showToastDialog(this, "This is a toast dialog")
+        }
+        btnNumberPicker?.setOnClickListener {
+            NumberPickerDialog.Builder(this)
+                    .setMaxValue(10)
+                    .setMinValue(1)
+                    .show()
+        }
+        btnAge?.setOnClickListener {
+            AgeDialog.Builder(this)
+                    .show()
+        }
 
         val list = arrayListOf<String>()
         for (i in 0..15) {
@@ -53,7 +72,7 @@ class DialogActivity : AppCompatActivity() {
         val adapter = MyAdapter()
         adapter.setOnItemClickListener(RecyclerDialog.OnItemClickListener { _, _, position -> toast("click item $position") })
         var dialog: RecyclerDialog? = null
-        btnRecyclerDialog.setOnClickListener {
+        btnRecycler.setOnClickListener {
             if (dialog == null) {
                 dialog = RecyclerDialog.Builder(this)
                         .setTitle("添加每日推送")

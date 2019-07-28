@@ -1,8 +1,6 @@
 package com.junpu.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,34 +10,38 @@ import android.widget.NumberPicker.OnValueChangeListener;
 /**
  * 列表对话框
  */
-public class NumberPickerDialog extends Dialog {
+public class NumberPickerDialog extends BaseDialog {
     
     private NumberPicker mNumberpicker;
 
     private OnValueChangeListener mOnValueChangeListener;
 
     public NumberPickerDialog(Context context) {
-        this(context, 0);
+        super(context);
     }
 
-    public NumberPickerDialog(Context context, int theme) {
-        super(context, theme);
-        init();
+    public NumberPickerDialog(Context context, int themeResId) {
+        super(context, themeResId);
     }
 
-    private void init() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_numberpicker);
-        Window window = getWindow();
+    public NumberPickerDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+        super(context, cancelable, cancelListener);
+    }
+
+    @Override
+    protected int layout() {
+        return R.layout.dialog_numberpicker;
+    }
+
+    @Override
+    protected void initWindow(Window window, WindowManager.LayoutParams params) {
         window.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-        window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
         setLandScape(false);
-        initUI();
     }
 
-    private void initUI() {
-        mNumberpicker = (NumberPicker) findViewById(R.id.numberPicker);
+    @Override
+    protected void initView() {
+        mNumberpicker = findViewById(R.id.numberPicker);
         // 关闭可编辑模式
         mNumberpicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         mNumberpicker.setOnValueChangedListener(new OnValueChangeListener() {

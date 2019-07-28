@@ -1,52 +1,54 @@
 package com.junpu.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
 
 /**
  * 用户选择生日dialog
  */
-public class UserAgeDialog extends Dialog {
+public class AgeDialog extends BaseDialog {
 
     private DatePicker mDatePicker;
 
     private OnDateChangedListener mListener;
 
+    public AgeDialog(Context context) {
+        super(context);
+    }
+
+    public AgeDialog(Context context, int themeResId) {
+        super(context, themeResId);
+    }
+
+    public AgeDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+        super(context, cancelable, cancelListener);
+    }
+
     public void setOnDateChangedListener(OnDateChangedListener listener) {
         mListener = listener;
     }
 
-    public UserAgeDialog(Context context) {
-        super(context);
-        init(context);
+    @Override
+    protected int layout() {
+        return R.layout.dialog_age;
     }
 
-    private void init(Context context) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        int width = DialogUtils.getScreenWidth(context);
-        LayoutParams lp = new LayoutParams(width, LayoutParams.WRAP_CONTENT);
-
-        ViewGroup view = (ViewGroup) LayoutInflater.from(getContext()).inflate(R.layout.dialog_user_age, null);
-        mDatePicker = (DatePicker) view.findViewById(R.id.datePicker);
-        setContentView(view, lp);
-        mDatePicker.setMaxDate(System.currentTimeMillis());
-
-        Window window = getWindow();
-        window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+    @Override
+    protected void initWindow(Window window, WindowManager.LayoutParams params) {
         window.setGravity(Gravity.BOTTOM);
         window.setWindowAnimations(R.style.dialog_anim_bottom);
+    }
 
+    @Override
+    protected void initView() {
         setCanceledOnTouchOutside(true);
+        mDatePicker = findViewById(R.id.datePicker);
+        mDatePicker.setMaxDate(System.currentTimeMillis());
     }
 
     /**
@@ -134,16 +136,16 @@ public class UserAgeDialog extends Dialog {
             return this;
         }
 
-        public UserAgeDialog create() {
-            UserAgeDialog dialog = new UserAgeDialog(mContext);
+        public AgeDialog create() {
+            AgeDialog dialog = new AgeDialog(mContext);
             dialog.initDate(mBirthday);
             dialog.setOnDateChangedListener(mListener);
             dialog.setOnDismissListener(mOnDismissListener);
             return dialog;
         }
 
-        public UserAgeDialog show() {
-            UserAgeDialog dialog = create();
+        public AgeDialog show() {
+            AgeDialog dialog = create();
             dialog.show();
             return dialog;
         }

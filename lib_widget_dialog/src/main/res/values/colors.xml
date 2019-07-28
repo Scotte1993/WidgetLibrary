@@ -12,4 +12,6 @@
     <color name="dialog_item_normal">#00000000</color>
 
     <color name="dialog_dim_bg">#6b347ffc</color>
+    <color name="dialog_loading">#347ffc</color>
+    <color name="dialog_loading_bg">#ffffff</color>
 </resources>

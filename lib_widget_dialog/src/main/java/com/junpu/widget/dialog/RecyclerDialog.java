@@ -1,8 +1,6 @@
 package com.junpu.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,7 +24,7 @@ import java.util.List;
  * @author junpu
  * @date 2019-07-16
  */
-public class RecyclerDialog extends Dialog {
+public class RecyclerDialog extends BaseDialog {
 
     public static final int STATUS_LOADING = 0;
     public static final int STATUS_SUCCESS = 1;
@@ -43,40 +41,31 @@ public class RecyclerDialog extends Dialog {
     private OnItemClickListener mOnItemClickListener;
 
     public RecyclerDialog(Context context) {
-        this(context, R.style.Theme_Dialog_Recycler);
+        super(context, R.style.Theme_Dialog_Recycler);
     }
 
     public RecyclerDialog(Context context, int themeResId) {
         super(context, themeResId);
-        init();
     }
 
-    protected RecyclerDialog(Context context, boolean cancelable, DialogInterface.OnCancelListener cancelListener) {
+    public RecyclerDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
-        init();
     }
 
-    private void init() {
-        setContentView(R.layout.dialog_recycler_view);
-        Window window = getWindow();
-        if (window != null) {
-            window.setGravity(Gravity.BOTTOM);
-            WindowManager.LayoutParams params = window.getAttributes();
-            params.width = WindowManager.LayoutParams.MATCH_PARENT;
-            params.height = WindowManager.LayoutParams.MATCH_PARENT;
-            window.setAttributes(params);
-        }
-
-        initUI();
+    @Override
+    protected int layout() {
+        return R.layout.dialog_recycler_view;
     }
 
-    private void initUI() {
-        findViewById(R.id.cancelView).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cancel();
-            }
-        });
+    @Override
+    protected void initWindow(Window window, WindowManager.LayoutParams params) {
+        window.setGravity(Gravity.BOTTOM);
+        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+    }
+
+    @Override
+    protected void initView() {
         mTextTitle = findViewById(R.id.textTitle);
         mTextSubTitle = findViewById(R.id.textSubTitle);
         mTextMessage = findViewById(R.id.textMessage);
@@ -84,30 +73,6 @@ public class RecyclerDialog extends Dialog {
         mProgressBar = findViewById(R.id.progress);
         mTextErrorMessage = findViewById(R.id.errorMessage);
         loading();
-    }
-
-    /**
-     * 设置Dialog宽度
-     */
-    public void setWidth(int width) {
-        Window window = getWindow();
-        if (window != null) {
-            WindowManager.LayoutParams lp = window.getAttributes();
-            lp.width = width;
-            window.setAttributes(lp);
-        }
-    }
-
-    /**
-     * 设置Dialog高度
-     */
-    public void setHeight(int height) {
-        Window window = getWindow();
-        if (window != null) {
-            WindowManager.LayoutParams lp = window.getAttributes();
-            lp.height = height;
-            window.setAttributes(lp);
-        }
     }
 
     public RecyclerView getRecyclerView() {

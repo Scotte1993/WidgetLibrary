@@ -1,8 +1,6 @@
 package com.junpu.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,7 +22,7 @@ import java.util.List;
 /**
  * 列表对话框
  */
-public class ListDialog extends Dialog {
+public class ListDialog extends BaseDialog {
 
     private ListView mListView;
     private View mActionMenu;
@@ -33,27 +31,31 @@ public class ListDialog extends Dialog {
     private OnClickListener mOnClickListener;
 
     public ListDialog(Context context) {
-        this(context, 0);
+        super(context);
     }
 
-    public ListDialog(Context context, int theme) {
-        super(context, theme);
-        init();
+    public ListDialog(Context context, int themeResId) {
+        super(context, themeResId);
     }
 
-    private void init() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_list);
-        Window window = getWindow();
+    public ListDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
+        super(context, cancelable, cancelListener);
+    }
+
+    @Override
+    protected int layout() {
+        return R.layout.dialog_list;
+    }
+
+    @Override
+    protected void initWindow(Window window, WindowManager.LayoutParams params) {
         window.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-        window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         window.setWindowAnimations(R.style.dialog_anim_bottom);
-
         setLandScape(false);
-        initUI();
     }
 
-    private void initUI() {
+    @Override
+    protected void initView() {
         mListView = findViewById(android.R.id.list);
         mActionMenu = findViewById(R.id.actionMenu);
         mButton1 = findViewById(android.R.id.button1);

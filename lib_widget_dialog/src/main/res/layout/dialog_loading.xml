@@ -2,24 +2,23 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/ic_dialog_bg_black"
+    android:background="@drawable/dialog_loading_bg"
     android:gravity="center"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:padding="10dp">
 
     <ProgressBar
         android:id="@+id/progress"
         style="@style/dialog_loading"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_margin="10dp"/>
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
 
     <TextView
-        android:id="@+id/notice_content"
+        android:id="@+id/textMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="..."
-        android:padding="10dp"
-        android:textColor="@android:color/white" />
+        android:layout_marginStart="10dp"
+        android:text="@string/dialog_loading"
+        android:textColor="@color/dialog_loading" />
 
 </LinearLayout>

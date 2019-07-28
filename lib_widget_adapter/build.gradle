@@ -26,3 +26,13 @@ dependencies {
 //    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     api "com.android.support:recyclerview-v7:$support_version"
 }
+
+// 将源代码打包进aar
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+
+artifacts {
+    archives androidSourcesJar
+}

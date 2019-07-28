@@ -1,6 +1,5 @@
 package com.junpu.widget.dialog;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.text.InputFilter;
@@ -18,48 +17,43 @@ import android.widget.TextView;
  * @author Junpu
  * @time 2018/9/13 14:33
  */
-public class EditDialog extends Dialog implements View.OnClickListener {
+public class EditDialog extends BaseDialog implements View.OnClickListener {
 
     private TextView mTextTitle;
     private EditText mEditText;
     // 取消按钮
     private TextView mNegativeButton;
     private OnClickListener mNegativeListener;
-    //确定按钮
+    // 确定按钮
     private TextView mPositiveButton;
     private OnSubmitListener mOnSubmitListener;
 
     public EditDialog(Context context) {
-        this(context, 0);
+        super(context);
     }
 
     public EditDialog(Context context, int themeResId) {
         super(context, themeResId);
-        init();
     }
 
     public EditDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
         super(context, cancelable, cancelListener);
-        init();
     }
 
-    private void init() {
-        setContentView(R.layout.dialog_edit);
+    @Override
+    protected int layout() {
+        return R.layout.dialog_edit;
+    }
+
+    @Override
+    protected void initWindow(Window window, WindowManager.LayoutParams params) {
+        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+    }
+
+    @Override
+    protected void initView() {
         setCanceledOnTouchOutside(false);
-
-        Window window = getWindow();
-        if (window != null) {
-            window.setGravity(Gravity.CENTER);
-            window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-            WindowManager.LayoutParams lp = window.getAttributes();
-            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        }
-
-        initUI();
-    }
-
-    private void initUI() {
         mTextTitle = findViewById(R.id.title);
         mEditText = findViewById(R.id.editText);
         mNegativeButton = findViewById(R.id.cancel);
